@@ -1,6 +1,7 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig((options) => ({
+  tsconfig: "./tsconfig.json",
   entryPoints: [
     "src/index.ts",
     "src/button.tsx",

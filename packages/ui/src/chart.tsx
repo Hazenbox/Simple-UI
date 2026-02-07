@@ -64,7 +64,7 @@ ChartContainer.displayName = "Chart"
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
     const colorConfig = Object.entries(config).filter(
-        ([_, config]) => config.theme || config.color
+        ([_key, configItem]: [string, ChartConfig[string]]) => configItem.theme || configItem.color
     )
 
     if (!colorConfig.length) {
@@ -75,7 +75,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
         <style
             dangerouslySetInnerHTML={{
                 __html: Object.entries(config)
-                    .map(([key, item]) => {
+                    .map(([key, item]: [string, ChartConfig[string]]) => {
                         const color = item.theme?.[Object.keys(item.theme)[0]] || item.color
                         return color
                             ? `[data-chart=${id}] { --color-${key}: ${color}; }`
