@@ -32,7 +32,7 @@ export const ColorPicker = React.forwardRef<HTMLDivElement, ColorPickerProps>(
                             className="w-full justify-start gap-2"
                         >
                             <div
-                                className="h-6 w-6 rounded border"
+                                className="h-6 w-6 rounded-md border"
                                 style={{ backgroundColor: color }}
                             />
                             <span className="font-mono text-sm">{color}</span>
@@ -45,7 +45,7 @@ export const ColorPicker = React.forwardRef<HTMLDivElement, ColorPickerProps>(
                                 color={color}
                                 onChange={handleChange}
                                 prefixed
-                                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+                                className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
                             />
                         </div>
                     </PopoverContent>

@@ -7,7 +7,7 @@ const List = React.forwardRef<
 >(({ className, ...props }, ref) => (
     <ul
         ref={ref}
-        className={cn("divide-y divide-border rounded-md border", className)}
+        className={cn("divide-y divide-border rounded-xl border", className)}
         {...props}
     />
 ));

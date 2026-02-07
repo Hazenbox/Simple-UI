@@ -89,7 +89,7 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
                             type="button"
                             variant="ghost"
                             size="sm"
-                            className="h-1/2 rounded-none rounded-tr-md border-b px-2"
+                            className="h-1/2 rounded-none rounded-tr-lg border-b px-2"
                             onClick={handleIncrement}
                             disabled={disabled || internalValue >= max}
                             tabIndex={-1}
@@ -100,7 +100,7 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
                             type="button"
                             variant="ghost"
                             size="sm"
-                            className="h-1/2 rounded-none rounded-br-md px-2"
+                            className="h-1/2 rounded-none rounded-br-lg px-2"
                             onClick={handleDecrement}
                             disabled={disabled || internalValue <= min}
                             tabIndex={-1}

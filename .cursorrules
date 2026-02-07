@@ -11,8 +11,15 @@
 *   Container padding: `p-3` to `p-4`. Never `p-6` or larger.
 *   Body text: `text-sm` (14px). Use `text-xs` for labels, metadata, help text.
 *   Headings: Max `text-2xl` for h1. No `text-4xl` or larger in product views.
-*   Border radius: `rounded-lg` max for containers. No `rounded-xl`.
-*   Shadows: `shadow-sm` for cards. Never heavy shadows.
+*   Border radius (concentric logic):
+    *   Page/floating surfaces (Card, Dialog, Select dropdown, Popover): `rounded-xl`.
+    *   Inline controls (Button, Input, Textarea, inner menu items): `rounded-lg`.
+    *   Small elements (Checkbox, resize handle): `rounded-sm`.
+    *   Pill elements (Badge, Chip, Switch, Progress): `rounded-full`.
+*   Shadows (3-tier scale):
+    *   Grounded surfaces (Card, Alert): `shadow-sm`.
+    *   Floating surfaces (Popover, Select, HoverCard, Tooltip): `shadow-md`.
+    *   Prominent overlays (Dialog, Sheet, Drawer): `shadow-lg`.
 
 ## Import Patterns
 *   Import UI components from `@acme/ui/[component]`.

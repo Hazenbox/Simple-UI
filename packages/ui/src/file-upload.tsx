@@ -96,7 +96,7 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
                     className={cn(
-                        "flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-6 transition-colors",
+                        "flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-4 transition-colors",
                         isDragging
                             ? "border-primary bg-primary/5"
                             : "border-muted-foreground/25 hover:border-primary/50"
