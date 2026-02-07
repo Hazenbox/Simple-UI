@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog"
-import { motion } from "framer-motion"
 import { cn } from "./lib/utils"
 import { buttonVariants } from "./button"
 
@@ -15,20 +14,13 @@ const AlertDialogOverlay = React.forwardRef<
     React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
     <AlertDialogPrimitive.Overlay
-        ref={ref}
-        asChild
+        className={cn(
+            "fixed inset-0 z-50 bg-black/80 transition-opacity duration-200 data-[state=open]:opacity-100 data-[state=closed]:opacity-0",
+            className
+        )}
         {...props}
-    >
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className={cn(
-                "fixed inset-0 z-50 bg-black/80",
-                className
-            )}
-        />
-    </AlertDialogPrimitive.Overlay>
+        ref={ref}
+    />
 ))
 AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName
 
@@ -40,21 +32,17 @@ const AlertDialogContent = React.forwardRef<
         <AlertDialogOverlay />
         <AlertDialogPrimitive.Content
             ref={ref}
-            asChild
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
             {...props}
         >
-            <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+            <div
                 className={cn(
-                    "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-3 border bg-background p-4 shadow-lg rounded-xl",
+                    "grid w-full max-w-lg gap-3 border bg-background p-4 shadow-lg rounded-xl",
                     className
                 )}
             >
                 {children}
-            </motion.div>
+            </div>
         </AlertDialogPrimitive.Content>
     </AlertDialogPortal>
 ))
