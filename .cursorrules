@@ -1,0 +1,24 @@
+# Cursor Rules for Simple UI
+
+## General Behavior
+*   Always use TypeScript.
+*   Prefer functional components with named exports.
+*   Use "use client" directive for any component using hooks or event listeners.
+
+## Import Patterns
+*   Import UI components from `@acme/ui/[component]`.
+*   Import icons from `lucide-react`.
+*   Import motion from `framer-motion`.
+
+## Styling Rules
+*   Use `cn()` for class merging.
+*   Use `cva()` for variant definitions.
+*   Do NOT use arbitrary values (`w-[350px]`) unless absolutely necessary. Use theme strings.
+
+## Code Generation Preferences
+*   **Layout**: Suggest `<Stack>` and `<Grid>` components over raw Tailwind div soup.
+*   **Animation**: When adding a modal or dropdown, automatically suggest wrapping in `<AnimatePresence>` and using standard motion variants.
+*   **Accessibility**: Always add `aria-label` to icon-only buttons.
+
+## Release Workflow
+*   After editing a component in `packages/ui`, remind the user to run `npx changeset` if they want to publish.

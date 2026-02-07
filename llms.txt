@@ -1,0 +1,43 @@
+# Simple UI System - AI Context
+
+## Project Overview
+"Simple UI" is an enterprise-grade, systematic design system built on **Radix UI** (Headless), **Tailwind CSS** (Styling), and **Framer Motion** (Animation).
+It mimics Shadcn UI's copy/paste architecture but enforces stricter, "AI-Native" layout rules.
+
+## Core Philosophy
+1.  **Layout Primitives**: Avoid raw `flex flex-col gap-4`. ALWAYS use `<Stack>`, `<Box>`, or `<Grid>`.
+2.  **Radix First**: Never build interactive logic from scratch. Use Radix primitives.
+3.  **Motion by Default**: Interactive elements must have micro-animations (tap scales, fade-ins).
+4.  **Accessibility**: All components must pass Axe A11y standards.
+
+## Tech Stack Rules
+*   **Framework**: React 19 (RSC Compatible).
+*   **Styling**: Tailwind CSS v4.
+*   **Icons**: `lucide-react`.
+*   **Animation**: `framer-motion` (AnimatePresence for exits).
+*   **Utils**: `cn()` (clsx + tailwind-merge) AND `cva` (class-variance-authority).
+
+## Component Rules
+### 1. File Structure
+*   `"use client"` must be at the very top of interactive components.
+*   Exports must be named exports: `export function Button...` (no default exports).
+
+### 2. Layout Patterns (MANDATORY)
+*   **❌ BAD**: `<div className="flex flex-col gap-4">`
+*   **✅ GOOD**: `<Stack gap="4" direction="column">`
+
+*   **❌ BAD**: `<div className="p-4 border rounded">`
+*   **✅ GOOD**: `<Box padding="4" border="default" radius="md">`
+
+### 3. API Consistency
+*   All interactive components must accept `asChild` prop (Slot pattern).
+*   All components must forward `ref`.
+*   Props interface must be exported: `export interface ButtonProps ...`
+
+## Theming Token Map
+*   **Colors**: Use semantic tokens only (`bg-primary`, `text-primary-foreground`). NEVER hardcode hex or generic colors (`bg-blue-500`).
+*   **Spacing**: Use the semantic density attributes when implemented.
+
+## Smart Component Guidelines
+*   **Forms**: Use `react-hook-form` + `zod`.
+*   **Tables**: Use `@tanstack/react-table`.

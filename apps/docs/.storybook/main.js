@@ -1,37 +1,47 @@
-import { dirname, join, resolve } from "path";
+import { join, resolve } from "path";
+import tailwindcss from "@tailwindcss/vite";
 
-function getAbsolutePath(value) {
-  return dirname(require.resolve(join(value, "package.json")));
-}
-
+/** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
   stories: ["../stories/*.stories.tsx", "../stories/**/*.stories.tsx"],
   addons: [
-    getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-essentials"),
-    getAbsolutePath("@storybook/addon-a11y"),
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-a11y",
   ],
   framework: {
-    name: getAbsolutePath("@storybook/react-vite"),
+    name: "@storybook/react-vite",
     options: {},
   },
 
-  core: {},
+  async viteFinal(config) {
+    config.plugins = config.plugins || [];
+    config.plugins.unshift(tailwindcss());
 
-  async viteFinal(config, { configType }) {
-    // customize the Vite config here
-    return {
-      ...config,
-      define: { "process.env": {} },
-      resolve: {
-        alias: [
-          {
-            find: "ui",
-            replacement: resolve(__dirname, "../../../packages/ui/"),
-          },
-        ],
+    config.resolve = config.resolve || {};
+    let alias = config.resolve.alias || [];
+
+    // Ensure alias is an array for regex support
+    if (!Array.isArray(alias)) {
+      alias = Object.entries(alias).map(([find, replacement]) => ({ find, replacement }));
+    }
+
+    const uiSrc = resolve(process.cwd(), "../../packages/ui/src");
+
+    alias.unshift(
+      {
+        find: /^@acme\/ui$/,
+        replacement: join(uiSrc, "index.ts"),
       },
-    };
+      {
+        find: /^@acme\/ui\/(.*)$/,
+        replacement: join(uiSrc, "$1"),
+      }
+    );
+
+    config.resolve.alias = alias;
+
+    return config;
   },
 
   docs: {
