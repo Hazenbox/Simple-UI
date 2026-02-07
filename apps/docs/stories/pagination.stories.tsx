@@ -122,3 +122,41 @@ export const LongList: Story = {
         </Pagination>
     ),
 };
+
+export const Circular: Story = {
+    render: () => (
+        <Pagination>
+            <PaginationContent>
+                <PaginationItem>
+                    <PaginationPrevious href="#" variant="circular" />
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationLink href="#" variant="circular">
+                        1
+                    </PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationLink href="#" variant="circular" isActive>
+                        2
+                    </PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationLink href="#" variant="circular">
+                        3
+                    </PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationEllipsis />
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationLink href="#" variant="circular">
+                        10
+                    </PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationNext href="#" variant="circular" />
+                </PaginationItem>
+            </PaginationContent>
+        </Pagination>
+    ),
+};
