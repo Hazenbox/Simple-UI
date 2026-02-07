@@ -7,12 +7,27 @@ import {
     MenubarSeparator,
     MenubarTrigger,
     MenubarCheckboxItem,
-    MenubarRadioGroup,
-    MenubarRadioItem,
     MenubarSub,
     MenubarSubContent,
     MenubarSubTrigger,
+    MenubarShortcut,
 } from "@acme/ui/menubar";
+import {
+    File,
+    Edit,
+    Eye,
+    HelpCircle,
+    Plus,
+    FolderOpen,
+    Save,
+    Printer,
+    Undo,
+    Redo,
+    Scissors,
+    Copy,
+    ClipboardPaste,
+    Maximize,
+} from "lucide-react";
 
 const meta = {
     title: "UI/Navigation/Menubar",
@@ -54,7 +69,9 @@ export const Default: Story = {
             <MenubarMenu>
                 <MenubarTrigger>View</MenubarTrigger>
                 <MenubarContent>
-                    <MenubarCheckboxItem checked>Show Toolbar</MenubarCheckboxItem>
+                    <MenubarCheckboxItem checked>
+                        Show Toolbar
+                    </MenubarCheckboxItem>
                     <MenubarCheckboxItem>Show Sidebar</MenubarCheckboxItem>
                     <MenubarSeparator />
                     <MenubarItem>Enter Full Screen</MenubarItem>
@@ -82,6 +99,152 @@ export const WithSubmenu: Story = {
                     <MenubarSeparator />
                     <MenubarItem>Save</MenubarItem>
                     <MenubarItem>Export</MenubarItem>
+                </MenubarContent>
+            </MenubarMenu>
+        </Menubar>
+    ),
+};
+
+export const WithIcons: Story = {
+    render: () => (
+        <Menubar>
+            <MenubarMenu>
+                <MenubarTrigger>
+                    <File />
+                    File
+                </MenubarTrigger>
+                <MenubarContent>
+                    <MenubarItem>
+                        <Plus className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        New File
+                        <MenubarShortcut>Ctrl+N</MenubarShortcut>
+                    </MenubarItem>
+                    <MenubarItem>
+                        <FolderOpen className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        Open...
+                        <MenubarShortcut>Ctrl+O</MenubarShortcut>
+                    </MenubarItem>
+                    <MenubarItem>
+                        <Save className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        Save
+                        <MenubarShortcut>Ctrl+S</MenubarShortcut>
+                    </MenubarItem>
+                    <MenubarSeparator />
+                    <MenubarItem>
+                        <Printer className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        Print
+                        <MenubarShortcut>Ctrl+P</MenubarShortcut>
+                    </MenubarItem>
+                </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+                <MenubarTrigger>
+                    <Edit />
+                    Edit
+                </MenubarTrigger>
+                <MenubarContent>
+                    <MenubarItem>
+                        <Undo className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        Undo
+                        <MenubarShortcut>Ctrl+Z</MenubarShortcut>
+                    </MenubarItem>
+                    <MenubarItem>
+                        <Redo className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        Redo
+                        <MenubarShortcut>Ctrl+Y</MenubarShortcut>
+                    </MenubarItem>
+                    <MenubarSeparator />
+                    <MenubarItem>
+                        <Scissors className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        Cut
+                    </MenubarItem>
+                    <MenubarItem>
+                        <Copy className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        Copy
+                    </MenubarItem>
+                    <MenubarItem>
+                        <ClipboardPaste className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        Paste
+                    </MenubarItem>
+                </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+                <MenubarTrigger>
+                    <Eye />
+                    View
+                </MenubarTrigger>
+                <MenubarContent>
+                    <MenubarCheckboxItem checked>
+                        Show Toolbar
+                    </MenubarCheckboxItem>
+                    <MenubarCheckboxItem>Show Sidebar</MenubarCheckboxItem>
+                    <MenubarSeparator />
+                    <MenubarItem>
+                        <Maximize className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        Full Screen
+                    </MenubarItem>
+                </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+                <MenubarTrigger>
+                    <HelpCircle />
+                    Help
+                </MenubarTrigger>
+                <MenubarContent>
+                    <MenubarItem>Documentation</MenubarItem>
+                    <MenubarItem>Release Notes</MenubarItem>
+                    <MenubarSeparator />
+                    <MenubarItem>About</MenubarItem>
+                </MenubarContent>
+            </MenubarMenu>
+        </Menubar>
+    ),
+};
+
+export const WithIconOnly: Story = {
+    render: () => (
+        <Menubar>
+            <MenubarMenu>
+                <MenubarTrigger aria-label="File">
+                    <File />
+                </MenubarTrigger>
+                <MenubarContent>
+                    <MenubarItem>New File</MenubarItem>
+                    <MenubarItem>Open...</MenubarItem>
+                    <MenubarItem>Save</MenubarItem>
+                </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+                <MenubarTrigger aria-label="Edit">
+                    <Edit />
+                </MenubarTrigger>
+                <MenubarContent>
+                    <MenubarItem>Undo</MenubarItem>
+                    <MenubarItem>Redo</MenubarItem>
+                    <MenubarSeparator />
+                    <MenubarItem>Cut</MenubarItem>
+                    <MenubarItem>Copy</MenubarItem>
+                    <MenubarItem>Paste</MenubarItem>
+                </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+                <MenubarTrigger aria-label="View">
+                    <Eye />
+                </MenubarTrigger>
+                <MenubarContent>
+                    <MenubarCheckboxItem checked>
+                        Show Toolbar
+                    </MenubarCheckboxItem>
+                    <MenubarCheckboxItem>Show Sidebar</MenubarCheckboxItem>
+                </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+                <MenubarTrigger aria-label="Help">
+                    <HelpCircle />
+                </MenubarTrigger>
+                <MenubarContent>
+                    <MenubarItem>Documentation</MenubarItem>
+                    <MenubarItem>About</MenubarItem>
                 </MenubarContent>
             </MenubarMenu>
         </Menubar>
