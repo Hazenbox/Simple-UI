@@ -301,6 +301,9 @@ importers:
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
+      tailwindcss:
+        specifier: ^4.1.18
+        version: 4.1.18
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(typescript@5.5.4)

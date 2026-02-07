@@ -46,6 +46,17 @@ const config = {
 
     config.resolve.alias = alias;
 
+    // Exclude @acme/ui from optimizeDeps to prevent esbuild pre-bundling
+    config.optimizeDeps = config.optimizeDeps || {};
+    config.optimizeDeps.exclude = config.optimizeDeps.exclude || [];
+    config.optimizeDeps.exclude.push("@acme/ui");
+
+    // Allow Vite to serve files from the ui package source
+    config.server = config.server || {};
+    config.server.fs = config.server.fs || {};
+    config.server.fs.allow = config.server.fs.allow || [];
+    config.server.fs.allow.push(uiSrc);
+
     // Ensure CSS files are properly handled
     config.css = config.css || {};
     config.css.postcss = config.css.postcss || {};
