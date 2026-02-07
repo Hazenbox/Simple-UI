@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Toaster } from "@acme/ui/toaster";
 import { Button } from "@acme/ui/button";
-import { useToast } from "@acme/ui/use-toast";
+import { toast } from "sonner";
 
 const meta = {
     title: "UI/Overlay/Toaster",
@@ -16,15 +16,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const ToastDemo = () => {
-    const { toast } = useToast();
-
     return (
         <div className="space-y-4">
             <Button
                 variant="outline"
                 onClick={() => {
-                    toast({
-                        title: "Scheduled: Catch up",
+                    toast("Scheduled: Catch up", {
                         description: "Friday, February 10, 2023 at 5:57 PM",
                     });
                 }}
@@ -41,17 +38,17 @@ export const Default: Story = {
 };
 
 const ToastWithAction = () => {
-    const { toast } = useToast();
-
     return (
         <div className="space-y-4">
             <Button
                 variant="outline"
                 onClick={() => {
-                    toast({
-                        title: "Uh oh! Something went wrong.",
+                    toast("Uh oh! Something went wrong.", {
                         description: "There was a problem with your request.",
-                        action: <Button variant="outline" size="sm">Try again</Button>,
+                        action: {
+                            label: "Try again",
+                            onClick: () => console.log("Try again clicked"),
+                        },
                     });
                 }}
             >
@@ -67,16 +64,12 @@ export const WithAction: Story = {
 };
 
 const ToastDestructive = () => {
-    const { toast } = useToast();
-
     return (
         <div className="space-y-4">
             <Button
                 variant="outline"
                 onClick={() => {
-                    toast({
-                        variant: "destructive",
-                        title: "Error",
+                    toast.error("Error", {
                         description: "Your session has expired. Please log in again.",
                     });
                 }}

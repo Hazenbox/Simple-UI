@@ -7,6 +7,7 @@ const config = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-a11y",
+    "@storybook/addon-mcp",
   ],
   framework: {
     name: "@storybook/react-vite",
@@ -18,6 +19,10 @@ const config = {
     config.plugins = config.plugins || [];
     config.plugins.unshift(tailwindcss.default());
 
+    // Set Vite root to project root to ensure correct path resolution
+    // Storybook runs from apps/docs, so go up one level to get to project root
+    config.root = resolve(process.cwd(), "..");
+
     config.resolve = config.resolve || {};
     let alias = config.resolve.alias || [];
 
@@ -26,7 +31,8 @@ const config = {
       alias = Object.entries(alias).map(([find, replacement]) => ({ find, replacement }));
     }
 
-    const uiSrc = resolve(process.cwd(), "../../packages/ui/src");
+    // Resolve path from project root (now set in config.root)
+    const uiSrc = resolve(config.root, "packages/ui/src");
 
     alias.unshift(
       {
@@ -40,6 +46,10 @@ const config = {
     );
 
     config.resolve.alias = alias;
+
+    // Ensure CSS files are properly handled
+    config.css = config.css || {};
+    config.css.postcss = config.css.postcss || {};
 
     return config;
   },
