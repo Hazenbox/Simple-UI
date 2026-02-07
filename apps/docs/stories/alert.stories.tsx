@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Alert, AlertDescription, AlertTitle } from "@acme/ui/alert";
-import { Stack } from "@acme/ui/primitives/stack";
 import { AlertTriangle, AlertCircle, CheckCircle2, Info, Terminal } from "lucide-react";
 
 const meta = {
@@ -202,7 +201,7 @@ export const Compact: Story = {
 
 export const CompactWithIcon: Story = {
     render: () => (
-        <Stack gap="sm" className="w-96">
+        <div className="flex flex-col gap-2 w-96">
             <Alert size="compact" variant="success">
                 <CheckCircle2 className="h-4 w-4" />
                 <AlertTitle className="mb-0">Changes saved successfully.</AlertTitle>
@@ -219,13 +218,13 @@ export const CompactWithIcon: Story = {
                 <Info className="h-4 w-4" />
                 <AlertTitle className="mb-0">Update available.</AlertTitle>
             </Alert>
-        </Stack>
+        </div>
     ),
 };
 
 export const AllVariants: Story = {
     render: () => (
-        <Stack gap="md" className="w-[480px]">
+        <div className="flex flex-col gap-4 w-[480px]">
             <Alert variant="default">
                 <AlertTitle>Default Alert</AlertTitle>
                 <AlertDescription>
@@ -274,6 +273,6 @@ export const AllVariants: Story = {
                     Emphasized success with background.
                 </AlertDescription>
             </Alert>
-        </Stack>
+        </div>
     ),
 };
