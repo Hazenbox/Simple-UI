@@ -51,11 +51,21 @@ const config = {
     config.optimizeDeps.exclude = config.optimizeDeps.exclude || [];
     config.optimizeDeps.exclude.push("@acme/ui");
 
-    // Allow Vite to serve files from the ui package source
+    // Include common dependencies that @acme/ui uses to ensure they're pre-bundled
+    config.optimizeDeps.include = config.optimizeDeps.include || [];
+    config.optimizeDeps.include.push(
+      "clsx",
+      "tailwind-merge",
+      "lucide-react"
+    );
+
+    // Allow Vite to serve files from the entire monorepo root
+    // (needed for stories, ui source, and node_modules)
+    const monorepoRoot = resolve(configDir, "../../..");
     config.server = config.server || {};
     config.server.fs = config.server.fs || {};
     config.server.fs.allow = config.server.fs.allow || [];
-    config.server.fs.allow.push(uiSrc);
+    config.server.fs.allow.push(monorepoRoot);
 
     // Ensure CSS files are properly handled
     config.css = config.css || {};
