@@ -18,7 +18,7 @@ export const Stat = React.forwardRef<HTMLDivElement, StatProps>(
         return (
             <div
                 ref={ref}
-                className={cn("rounded-lg border bg-card p-6 text-card-foreground", className)}
+                className={cn("rounded-lg border bg-card p-4 text-card-foreground", className)}
                 {...props}
             >
                 <div className="flex items-center justify-between">
@@ -26,7 +26,7 @@ export const Stat = React.forwardRef<HTMLDivElement, StatProps>(
                     {icon && <div className="text-muted-foreground">{icon}</div>}
                 </div>
                 <div className="mt-2 flex items-baseline gap-2">
-                    <p className="text-3xl font-bold">{value}</p>
+                    <p className="text-2xl font-bold">{value}</p>
                     {change !== undefined && (
                         <span
                             className={cn(

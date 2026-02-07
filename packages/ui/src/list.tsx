@@ -20,7 +20,7 @@ const ListItem = React.forwardRef<
     <li
         ref={ref}
         className={cn(
-            "flex items-center gap-3 px-4 py-3 hover:bg-muted/50 transition-colors",
+            "flex items-center gap-2 px-3 py-2 hover:bg-muted/50 transition-colors",
             className
         )}
         {...props}
@@ -44,7 +44,7 @@ const ListItemContent = React.forwardRef<
     HTMLDivElement,
     React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-    <div ref={ref} className={cn("flex-1 space-y-1", className)} {...props} />
+    <div ref={ref} className={cn("flex-1 space-y-0.5", className)} {...props} />
 ));
 ListItemContent.displayName = "ListItemContent";
 
@@ -66,7 +66,7 @@ const ListItemDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
     <p
         ref={ref}
-        className={cn("text-sm text-muted-foreground", className)}
+        className={cn("text-xs text-muted-foreground", className)}
         {...props}
     />
 ));
