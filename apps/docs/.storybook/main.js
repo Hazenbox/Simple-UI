@@ -1,4 +1,8 @@
 import { join, resolve } from "path";
+import { fileURLToPath } from "url";
+
+// Get the directory of this config file (ESM-safe)
+const configDir = fileURLToPath(new URL(".", import.meta.url));
 
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
@@ -7,7 +11,6 @@ const config = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-a11y",
-    "@storybook/addon-mcp",
   ],
   framework: {
     name: "@storybook/react-vite",
@@ -19,10 +22,6 @@ const config = {
     config.plugins = config.plugins || [];
     config.plugins.unshift(tailwindcss.default());
 
-    // Set Vite root to project root to ensure correct path resolution
-    // Storybook runs from apps/docs, so go up one level to get to project root
-    config.root = resolve(process.cwd(), "..");
-
     config.resolve = config.resolve || {};
     let alias = config.resolve.alias || [];
 
@@ -31,8 +30,8 @@ const config = {
       alias = Object.entries(alias).map(([find, replacement]) => ({ find, replacement }));
     }
 
-    // Resolve path from project root (now set in config.root)
-    const uiSrc = resolve(config.root, "packages/ui/src");
+    // Resolve path from config file location: .storybook -> docs -> root -> packages/ui/src
+    const uiSrc = resolve(configDir, "../../../packages/ui/src");
 
     alias.unshift(
       {
