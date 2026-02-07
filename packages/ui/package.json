@@ -279,6 +279,31 @@
       "import": "./dist/typography.mjs",
       "require": "./dist/typography.js"
     },
+    "./chip": {
+      "types": "./src/chip.tsx",
+      "import": "./dist/chip.mjs",
+      "require": "./dist/chip.js"
+    },
+    "./stat": {
+      "types": "./src/stat.tsx",
+      "import": "./dist/stat.mjs",
+      "require": "./dist/stat.js"
+    },
+    "./timeline": {
+      "types": "./src/timeline.tsx",
+      "import": "./dist/timeline.mjs",
+      "require": "./dist/timeline.js"
+    },
+    "./kbd": {
+      "types": "./src/kbd.tsx",
+      "import": "./dist/kbd.mjs",
+      "require": "./dist/kbd.js"
+    },
+    "./empty-state": {
+      "types": "./src/empty-state.tsx",
+      "import": "./dist/empty-state.mjs",
+      "require": "./dist/empty-state.js"
+    },
     "./lib/utils": {
       "types": "./src/lib/utils.ts",
       "import": "./dist/lib/utils.mjs",
