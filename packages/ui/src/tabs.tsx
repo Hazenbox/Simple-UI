@@ -35,7 +35,7 @@ const TabsList = React.forwardRef<
             className={cn(
                 "inline-flex items-center justify-center text-muted-foreground",
                 variant === "default" &&
-                    "h-8 rounded-lg bg-muted p-0.5",
+                    "h-8 rounded-xl bg-muted p-1",
                 variant === "underline" &&
                     "h-8 gap-2 border-b border-border",
                 className
@@ -55,9 +55,9 @@ const TabsTrigger = React.forwardRef<
         <TabsPrimitive.Trigger
             ref={ref}
             className={cn(
-                "inline-flex items-center justify-center gap-1.5 whitespace-nowrap px-2 py-0.5 text-xs font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:pointer-events-none disabled:opacity-50 [&>svg]:size-3.5 [&>svg]:shrink-0",
+                "inline-flex items-center justify-center gap-1.5 whitespace-nowrap px-3 py-1 text-xs font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:pointer-events-none disabled:opacity-50 [&>svg]:size-3.5 [&>svg]:shrink-0",
                 variant === "default" &&
-                    "rounded-md data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm",
+                    "rounded-lg data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm",
                 variant === "underline" &&
                     "rounded-none border-b-2 border-transparent pb-1.5 data-[state=active]:border-primary data-[state=active]:text-foreground",
                 className

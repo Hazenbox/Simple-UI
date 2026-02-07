@@ -64,7 +64,7 @@ const BreadcrumbItem = React.forwardRef<
             ref={ref}
             className={cn(
                 "inline-flex items-center gap-1",
-                variant === "pill" && "rounded-md bg-muted px-2 py-0.5",
+                variant === "pill" && "rounded-lg bg-muted px-2 py-0.5",
                 className
             )}
             {...props}

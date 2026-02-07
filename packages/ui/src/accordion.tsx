@@ -16,7 +16,7 @@ const accordionItemVariants = cva("", {
     variants: {
         variant: {
             default: "border-b",
-            ghost: "rounded-lg",
+            ghost: "rounded-xl",
         },
     },
     defaultVariants: {
@@ -30,7 +30,7 @@ const accordionTriggerVariants = cva(
         variants: {
             variant: {
                 default: "hover:underline",
-                ghost: "rounded-md px-3 hover:bg-accent",
+                ghost: "rounded-lg px-3 hover:bg-accent",
             },
         },
         defaultVariants: {

@@ -11,7 +11,7 @@ const Toolbar = React.forwardRef<
     <ToolbarPrimitive.Root
         ref={ref}
         className={cn(
-            "flex w-full min-w-max items-center gap-0.5 rounded-lg border bg-background p-0.5",
+            "flex w-full min-w-max items-center gap-0.5 rounded-xl border bg-background p-0.5",
             className
         )}
         {...props}

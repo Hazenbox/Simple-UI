@@ -50,7 +50,7 @@ const PaginationLink = ({
         aria-current={isActive ? "page" : undefined}
         className={cn(
             "inline-flex h-7 w-7 items-center justify-center whitespace-nowrap text-xs font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-            variant === "circular" ? "rounded-full" : "rounded-md",
+            variant === "circular" ? "rounded-full" : "rounded-lg",
             isActive &&
                 (variant === "circular"
                     ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground"
