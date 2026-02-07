@@ -1,18 +1,29 @@
 # Simple UI System - AI Context
 
 ## Project Overview
-"Simple UI" is an enterprise-grade, systematic design system built on **Radix UI** (Headless), **Tailwind CSS** (Styling), and **Framer Motion** (Animation).
-It mimics Shadcn UI's copy/paste architecture but enforces stricter, "AI-Native" layout rules.
+"Simple UI" is a compact, product-oriented design system built on **Radix UI** (Headless), **Tailwind CSS v4** (Styling), and **Framer Motion** (Animation).
+It targets dense, information-rich UIs for AI tools (Cursor, ChatGPT, v0.dev, Gemini, Linear) and SaaS products.
+
+## Design Density Philosophy
+This system defaults to **compact density** -- optimized for productivity tools, not marketing pages.
+
+*   **Control heights**: Default 32px (`h-8`), small 28px (`h-7`), large 36px (`h-9`). Never 40px+ for default controls.
+*   **Container padding**: 12-16px (`p-3` to `p-4`). Never `p-6` or larger.
+*   **Body text**: 14px (`text-sm`) is the workhorse. 12px (`text-xs`) for labels/metadata. 16px (`text-base`) only for card/dialog titles.
+*   **Typography**: Headings max at `text-2xl` (h1). No `text-4xl`+ in product views.
+*   **Border radius**: 6px base (`--radius: 0.375rem`). Cards use `rounded-lg`, not `rounded-xl`.
+*   **Shadows**: Subtle (`shadow-sm`). Cards prefer border + minimal shadow over heavy drop shadows.
+*   **Font weight**: `font-medium` is default. Reserve `font-semibold` for titles and emphasis.
 
 ## Core Philosophy
 1.  **Layout Primitives**: Avoid raw `flex flex-col gap-4`. ALWAYS use `<Stack>`, `<Box>`, or `<Grid>`.
 2.  **Radix First**: Never build interactive logic from scratch. Use Radix primitives.
-3.  **Motion by Default**: Interactive elements must have micro-animations (tap scales, fade-ins).
-4.  **Accessibility**: All components must pass Axe A11y standards.
+3.  **Motion by Default**: Interactive elements have subtle micro-animations (`whileTap: { scale: 0.98 }`).
+4.  **Accessibility**: All components must pass Axe A11y standards. Focus rings use `ring-2 ring-offset-1`.
 
 ## Tech Stack Rules
 *   **Framework**: React 19 (RSC Compatible).
-*   **Styling**: Tailwind CSS v4.
+*   **Styling**: Tailwind CSS v4 with `@theme` tokens.
 *   **Icons**: `lucide-react`.
 *   **Animation**: `framer-motion` (AnimatePresence for exits).
 *   **Utils**: `cn()` (clsx + tailwind-merge) AND `cva` (class-variance-authority).
@@ -23,21 +34,32 @@ It mimics Shadcn UI's copy/paste architecture but enforces stricter, "AI-Native"
 *   Exports must be named exports: `export function Button...` (no default exports).
 
 ### 2. Layout Patterns (MANDATORY)
-*   **❌ BAD**: `<div className="flex flex-col gap-4">`
-*   **✅ GOOD**: `<Stack gap="4" direction="column">`
+*   **BAD**: `<div className="flex flex-col gap-4">`
+*   **GOOD**: `<Stack gap="sm" direction="column">`
 
-*   **❌ BAD**: `<div className="p-4 border rounded">`
-*   **✅ GOOD**: `<Box padding="4" border="default" radius="md">`
+*   **BAD**: `<div className="p-6 border rounded-xl">`
+*   **GOOD**: `<Box padding="4" border="default" radius="md">`
 
 ### 3. API Consistency
-*   All interactive components must accept `asChild` prop (Slot pattern).
-*   All components must forward `ref`.
+*   All interactive components accept `asChild` prop (Slot pattern).
+*   All components forward `ref`.
 *   Props interface must be exported: `export interface ButtonProps ...`
+*   Interactive controls support `size` variant: `sm` | `default` | `lg` (some have `xl`).
+
+### 4. Size Variant Contract
+*   `sm`: 28px height, `text-xs`, tighter padding
+*   `default`: 32px height, `text-sm`, standard padding
+*   `lg`: 36px height, `text-sm`, wider padding
+*   `xl` (Button only): 40px height, for backward compatibility
 
 ## Theming Token Map
 *   **Colors**: Use semantic tokens only (`bg-primary`, `text-primary-foreground`). NEVER hardcode hex or generic colors (`bg-blue-500`).
-*   **Spacing**: Use the semantic density attributes when implemented.
+*   **Status colors**: `success`, `warning`, `info` for badges/chips (e.g., `bg-success/10 text-success`).
+*   **Spacing**: Use layout primitives with gap props. Avoid raw `gap-*` on divs.
 
 ## Smart Component Guidelines
-*   **Forms**: Use `react-hook-form` + `zod`.
-*   **Tables**: Use `@tanstack/react-table`.
+*   **Forms**: Use `react-hook-form` + `zod`. FormItem uses `space-y-1.5`.
+*   **Tables**: Use `@tanstack/react-table`. Headers `h-8`, cells `px-3 py-2`.
+*   **Badges**: Use `soft`, `success`, `warning`, `info` variants for status indicators.
+*   **Cards**: Default `p-4 rounded-lg shadow-sm`. Never `p-6 rounded-xl shadow`.
+*   **Dialogs**: Content `p-4`, titles `text-base font-semibold`.

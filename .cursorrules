@@ -5,6 +5,15 @@
 *   Prefer functional components with named exports.
 *   Use "use client" directive for any component using hooks or event listeners.
 
+## Design Density
+*   Default to **compact density**. This is a product-oriented system, not marketing.
+*   Control heights: `h-8` (32px) default. Never `h-10`+ for default controls.
+*   Container padding: `p-3` to `p-4`. Never `p-6` or larger.
+*   Body text: `text-sm` (14px). Use `text-xs` for labels, metadata, help text.
+*   Headings: Max `text-2xl` for h1. No `text-4xl` or larger in product views.
+*   Border radius: `rounded-lg` max for containers. No `rounded-xl`.
+*   Shadows: `shadow-sm` for cards. Never heavy shadows.
+
 ## Import Patterns
 *   Import UI components from `@acme/ui/[component]`.
 *   Import icons from `lucide-react`.
@@ -14,11 +23,13 @@
 *   Use `cn()` for class merging.
 *   Use `cva()` for variant definitions.
 *   Do NOT use arbitrary values (`w-[350px]`) unless absolutely necessary. Use theme strings.
+*   Focus rings: Use `ring-2 ring-ring ring-offset-1`. Never `ring-offset-2`.
 
 ## Code Generation Preferences
 *   **Layout**: Suggest `<Stack>` and `<Grid>` components over raw Tailwind div soup.
-*   **Animation**: When adding a modal or dropdown, automatically suggest wrapping in `<AnimatePresence>` and using standard motion variants.
+*   **Animation**: When adding a modal or dropdown, automatically suggest wrapping in `<AnimatePresence>` and using standard motion variants. Use `whileTap: { scale: 0.98 }` for buttons.
 *   **Accessibility**: Always add `aria-label` to icon-only buttons.
+*   **Status indicators**: Use `variant="success"`, `variant="warning"`, `variant="info"` on Badge/Chip for status. Use `variant="soft"` for tinted badges.
 
 ## Release Workflow
 *   After editing a component in `packages/ui`, remind the user to run `npx changeset` if they want to publish.
