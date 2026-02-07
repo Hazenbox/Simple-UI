@@ -29,13 +29,13 @@ export const Default: Story = {
             </PopoverTrigger>
             <PopoverContent className="w-80">
                 <Stack gap="md">
-                    <div className="space-y-2">
-                        <h4 className="font-medium leading-none">Dimensions</h4>
-                        <p className="text-sm text-muted-foreground">
+                    <div className="space-y-1">
+                        <h4 className="text-sm font-medium leading-none">Dimensions</h4>
+                        <p className="text-xs text-muted-foreground">
                             Set the dimensions for the layer.
                         </p>
                     </div>
-                    <Stack gap="sm">
+                    <Stack gap="base">
                         <Stack gap="xs">
                             <Label htmlFor="width">Width</Label>
                             <Input id="width" defaultValue="100%" />
@@ -59,13 +59,13 @@ export const WithForm: Story = {
             </PopoverTrigger>
             <PopoverContent className="w-80">
                 <Stack gap="md">
-                    <div className="space-y-2">
-                        <h4 className="font-medium leading-none">Quick Settings</h4>
-                        <p className="text-sm text-muted-foreground">
+                    <div className="space-y-1">
+                        <h4 className="text-sm font-medium leading-none">Quick Settings</h4>
+                        <p className="text-xs text-muted-foreground">
                             Adjust your preferences.
                         </p>
                     </div>
-                    <Stack gap="sm">
+                    <Stack gap="base">
                         <Stack gap="xs">
                             <Label htmlFor="name">Display name</Label>
                             <Input id="name" placeholder="Enter your name" />
