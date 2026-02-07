@@ -3,7 +3,6 @@
 import * as React from "react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
 import { X } from "lucide-react"
-import { AnimatePresence, motion } from "framer-motion"
 import { cn } from "./lib/utils"
 
 const Dialog = DialogPrimitive.Root
@@ -20,19 +19,12 @@ const DialogOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
     <DialogPrimitive.Overlay
         ref={ref}
-        asChild
+        className={cn(
+            "fixed inset-0 z-50 bg-black/80 transition-opacity duration-200 data-[state=open]:opacity-100 data-[state=closed]:opacity-0",
+            className
+        )}
         {...props}
-    >
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className={cn(
-                "fixed inset-0 z-50 bg-black/80",
-                className
-            )}
-        />
-    </DialogPrimitive.Overlay>
+    />
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
@@ -41,37 +33,24 @@ const DialogContent = React.forwardRef<
     React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
     <DialogPortal>
-        {/* We need AnimatePresence here to handle exit animations, but Radix unmounts on close.
-        Radix's 'forceMount' prop on Portal or Content + local state + AnimatePresence is the usual way.
-        However, simpler integration: use Radix's state to drive AnimatePresence? 
-        Actually, simplest: Just use CSS animations for now as Radix handles unmounting.
-        
-        WAIT. User asked for frammotion.
-        Radix primitives unmount on close. To animate out, we need to keep them mounted until animation finishes.
-        Radix `Dialog.Content` has `forceMount`? Yes.
-    */}
         <DialogOverlay />
         <DialogPrimitive.Content
             ref={ref}
-            asChild
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
             {...props}
         >
-            <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+            <div
                 className={cn(
-                    "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-3 border bg-background p-4 shadow-lg sm:rounded-xl",
+                    "grid w-full max-w-lg gap-3 border bg-background p-4 shadow-lg rounded-xl relative",
                     className
                 )}
             >
                 {children}
-                <DialogPrimitive.Close className="absolute right-4 top-4 rounded-lg opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+                <DialogPrimitive.Close className="absolute right-4 top-4 rounded-lg opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 disabled:pointer-events-none">
                     <X className="h-3.5 w-3.5" />
                     <span className="sr-only">Close</span>
                 </DialogPrimitive.Close>
-            </motion.div>
+            </div>
         </DialogPrimitive.Content>
     </DialogPortal>
 ))
