@@ -26,7 +26,7 @@ export const Default: Story = {
 export const WithIcon: Story = {
     render: () => (
         <EmptyState
-            icon={<FileQuestion className="h-10 w-10" />}
+            icon={<FileQuestion />}
             title="No files found"
             description="Upload your first file to get started."
         />
@@ -36,7 +36,7 @@ export const WithIcon: Story = {
 export const WithAction: Story = {
     render: () => (
         <EmptyState
-            icon={<Inbox className="h-10 w-10" />}
+            icon={<Inbox />}
             title="No messages"
             description="You don't have any messages yet. Start a conversation to get started."
             action={{
@@ -51,7 +51,7 @@ export const SearchResults: Story = {
     render: () => (
         <div className="w-full max-w-2xl">
             <EmptyState
-                icon={<Search className="h-10 w-10" />}
+                icon={<Search />}
                 title="No search results"
                 description="We couldn't find any results for your search. Try different keywords or check your spelling."
                 action={{
@@ -66,7 +66,7 @@ export const SearchResults: Story = {
 export const EmptyCart: Story = {
     render: () => (
         <EmptyState
-            icon={<ShoppingCart className="h-10 w-10" />}
+            icon={<ShoppingCart />}
             title="Your cart is empty"
             description="Looks like you haven't added anything to your cart yet. Start shopping to add items."
             action={{

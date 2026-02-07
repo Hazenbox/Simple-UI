@@ -18,24 +18,24 @@ export const EmptyState = React.forwardRef<HTMLDivElement, EmptyStateProps>(
             <div
                 ref={ref}
                 className={cn(
-                    "flex flex-col items-center justify-center rounded-lg border border-dashed p-4 text-center",
+                    "flex flex-col items-center justify-center p-4 text-center",
                     className
                 )}
                 {...props}
             >
                 {icon && (
-                    <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-muted text-muted-foreground">
+                    <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-muted text-muted-foreground [&>svg]:h-5 [&>svg]:w-5">
                         {icon}
                     </div>
                 )}
-                <h3 className="mb-2 text-base font-semibold">{title}</h3>
+                <h3 className="mb-1 text-sm font-semibold">{title}</h3>
                 {description && (
-                    <p className="mb-3 max-w-sm text-sm text-muted-foreground">
+                    <p className="mb-2 max-w-sm text-xs text-muted-foreground">
                         {description}
                     </p>
                 )}
                 {action && (
-                    <Button onClick={action.onClick} variant="outline">
+                    <Button onClick={action.onClick} variant="outline" size="sm">
                         {action.label}
                     </Button>
                 )}
