@@ -12,9 +12,9 @@ const closeButtonVariants = cva(
   {
     variants: {
       size: {
-        sm: "h-6 w-6",
-        default: "h-8 w-8",
-        lg: "h-10 w-10",
+        sm: "h-5 w-5",
+        default: "h-7 w-7",
+        lg: "h-8 w-8",
       },
       variant: {
         default: "data-[state=open]:bg-accent data-[state=open]:text-muted-foreground",
@@ -39,7 +39,8 @@ export interface CloseButtonProps
 const CloseButton = React.forwardRef<HTMLButtonElement, CloseButtonProps>(
   ({ className, size, variant, asChild = false, icon, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
-    const Icon = icon || <X className="h-4 w-4" />
+    const iconSize = size === "sm" ? "h-3 w-3" : size === "lg" ? "h-4 w-4" : "h-3.5 w-3.5"
+    const Icon = icon || <X className={iconSize} />
 
     if (asChild) {
       return (

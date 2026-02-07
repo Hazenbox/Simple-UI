@@ -10,12 +10,14 @@ export interface TextareaAutosizeProps
     VariantProps<typeof textareaVariants> {
     minRows?: number;
     maxRows?: number;
+    /** @deprecated Use `size` instead */
+    density?: "default" | "compact";
 }
 
 export const TextareaAutosize = React.forwardRef<
     HTMLTextAreaElement,
     TextareaAutosizeProps
->(({ className, minRows = 2, maxRows = 10, density = "default", onChange, ...props }, ref) => {
+>(({ className, minRows = 2, maxRows = 10, size = "default", density, onChange, ...props }, ref) => {
     const textareaRef = React.useRef<HTMLTextAreaElement | null>(null);
     const [height, setHeight] = React.useState<number | undefined>(undefined);
 
@@ -45,9 +47,11 @@ export const TextareaAutosize = React.forwardRef<
         textarea.style.height = `${newHeight}px`;
     }, [minRows, maxRows]);
 
+    const resolvedSize = density === "compact" ? "sm" : (size ?? "default")
+
     React.useEffect(() => {
         adjustHeight();
-    }, [adjustHeight, props.value, density]);
+    }, [adjustHeight, props.value, resolvedSize]);
 
     React.useLayoutEffect(() => {
         adjustHeight();
@@ -69,7 +73,7 @@ export const TextareaAutosize = React.forwardRef<
                 }
             }}
             className={cn(
-                textareaVariants({ density }),
+                textareaVariants({ size: resolvedSize }),
                 "resize-none transition-[height] duration-200 ease-in-out",
                 className
             )}

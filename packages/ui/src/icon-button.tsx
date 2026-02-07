@@ -23,10 +23,10 @@ const iconButtonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        sm: "h-9 w-9",
-        default: "h-10 w-10",
-        lg: "h-11 w-11",
-        icon: "h-10 w-10",
+        sm: "h-7 w-7",
+        default: "h-8 w-8",
+        lg: "h-9 w-9",
+        icon: "h-8 w-8",
       },
     },
     defaultVariants: {
@@ -59,8 +59,8 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
 
     return (
       <motion.button
-        whileTap={{ scale: 0.95 }}
-        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.98 }}
+        whileHover={{ scale: 1.03 }}
         transition={{ duration: 0.1 }}
         className={cn(iconButtonVariants({ variant, size, className }))}
         ref={ref as any}
