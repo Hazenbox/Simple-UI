@@ -15,6 +15,10 @@ const meta = {
             control: { type: "select" },
             options: ["text", "email", "password", "number", "tel", "url"],
         },
+        inputSize: {
+            control: { type: "select" },
+            options: ["default", "sm", "lg"],
+        },
         disabled: {
             control: "boolean",
         },
@@ -35,6 +39,16 @@ export const WithLabel: Story = {
         <Stack gap="sm" className="w-80">
             <Label htmlFor="email">Email Address</Label>
             <Input id="email" type="email" placeholder="you@example.com" />
+        </Stack>
+    ),
+};
+
+export const Sizes: Story = {
+    render: () => (
+        <Stack gap="sm" className="w-80">
+            <Input inputSize="sm" placeholder="Small (28px)" />
+            <Input inputSize="default" placeholder="Default (32px)" />
+            <Input inputSize="lg" placeholder="Large (36px)" />
         </Stack>
     ),
 };
@@ -62,7 +76,7 @@ export const WithError: Story = {
                 placeholder="Enter username"
                 className="border-destructive focus-visible:ring-destructive"
             />
-            <p className="text-sm text-destructive">Username is required</p>
+            <p className="text-xs text-destructive">Username is required</p>
         </Stack>
     ),
 };

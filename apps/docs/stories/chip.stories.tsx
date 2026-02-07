@@ -9,6 +9,12 @@ const meta = {
     parameters: {
         layout: "centered",
     },
+    argTypes: {
+        variant: {
+            control: { type: "select" },
+            options: ["default", "secondary", "outline", "destructive", "soft", "success", "warning", "info"],
+        },
+    },
 } satisfies Meta<typeof Chip>;
 
 export default meta;
@@ -28,6 +34,22 @@ export const Outline: Story = {
 
 export const Destructive: Story = {
     render: () => <Chip variant="destructive">Error</Chip>,
+};
+
+export const Soft: Story = {
+    render: () => <Chip variant="soft">Tinted</Chip>,
+};
+
+export const Success: Story = {
+    render: () => <Chip variant="success">Active</Chip>,
+};
+
+export const Warning: Story = {
+    render: () => <Chip variant="warning">Pending</Chip>,
+};
+
+export const Info: Story = {
+    render: () => <Chip variant="info">In Review</Chip>,
 };
 
 export const WithDelete: Story = {
@@ -51,6 +73,10 @@ export const AllVariants: Story = {
             <Chip variant="secondary">Secondary</Chip>
             <Chip variant="outline">Outline</Chip>
             <Chip variant="destructive">Destructive</Chip>
+            <Chip variant="soft">Soft</Chip>
+            <Chip variant="success">Success</Chip>
+            <Chip variant="warning">Warning</Chip>
+            <Chip variant="info">Info</Chip>
         </div>
     ),
 };
@@ -70,11 +96,11 @@ export const TagList: Story = {
         };
 
         return (
-            <div className="w-full max-w-md space-y-4">
+            <div className="w-full max-w-md space-y-3">
                 <h3 className="text-sm font-medium">Selected Technologies</h3>
                 <div className="flex flex-wrap gap-2">
                     {tags.map((tag, index) => (
-                        <Chip key={index} onDelete={() => removeTag(index)}>
+                        <Chip key={index} variant="outline" onDelete={() => removeTag(index)}>
                             {tag}
                         </Chip>
                     ))}
@@ -87,9 +113,9 @@ export const TagList: Story = {
 export const StatusChips: Story = {
     render: () => (
         <div className="flex flex-wrap gap-2">
-            <Chip variant="default">Active</Chip>
-            <Chip variant="secondary">Pending</Chip>
-            <Chip variant="outline">Draft</Chip>
+            <Chip variant="success">Active</Chip>
+            <Chip variant="warning">Pending</Chip>
+            <Chip variant="info">Draft</Chip>
             <Chip variant="destructive">Cancelled</Chip>
         </div>
     ),

@@ -12,7 +12,7 @@ const meta = {
     argTypes: {
         variant: {
             control: { type: "select" },
-            options: ["default", "secondary", "destructive", "outline"],
+            options: ["default", "secondary", "destructive", "outline", "soft", "success", "warning", "info"],
         },
     },
 } satisfies Meta<typeof Badge>;
@@ -47,13 +47,42 @@ export const Outline: Story = {
     },
 };
 
+export const Soft: Story = {
+    args: {
+        variant: "soft",
+        children: "Soft",
+    },
+};
+
+export const Success: Story = {
+    args: {
+        variant: "success",
+        children: "Healthy",
+    },
+};
+
+export const Warning: Story = {
+    args: {
+        variant: "warning",
+        children: "Expiring",
+    },
+};
+
+export const Info: Story = {
+    args: {
+        variant: "info",
+        children: "In Progress",
+    },
+};
+
 export const AllVariants: Story = {
     render: () => (
-        <Stack direction="row" gap="sm">
+        <Stack direction="row" gap="sm" className="flex-wrap">
             <Badge>Default</Badge>
             <Badge variant="secondary">Secondary</Badge>
             <Badge variant="destructive">Destructive</Badge>
             <Badge variant="outline">Outline</Badge>
+            <Badge variant="soft">Soft</Badge>
         </Stack>
     ),
 };
@@ -61,10 +90,21 @@ export const AllVariants: Story = {
 export const StatusBadges: Story = {
     render: () => (
         <Stack direction="row" gap="sm">
-            <Badge className="bg-green-500 hover:bg-green-600">Success</Badge>
-            <Badge className="bg-yellow-500 hover:bg-yellow-600">Warning</Badge>
-            <Badge className="bg-blue-500 hover:bg-blue-600">Info</Badge>
+            <Badge variant="success">Healthy</Badge>
+            <Badge variant="warning">Expiring</Badge>
+            <Badge variant="info">In Progress</Badge>
             <Badge variant="destructive">Error</Badge>
+        </Stack>
+    ),
+};
+
+export const DashboardMetrics: Story = {
+    render: () => (
+        <Stack direction="row" gap="sm">
+            <Badge variant="success">+25%</Badge>
+            <Badge variant="destructive">-1.4%</Badge>
+            <Badge variant="info">On track</Badge>
+            <Badge variant="warning">At risk</Badge>
         </Stack>
     ),
 };

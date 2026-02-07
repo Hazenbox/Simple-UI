@@ -11,6 +11,10 @@ const meta = {
         layout: "centered",
     },
     argTypes: {
+        size: {
+            control: { type: "select" },
+            options: ["default", "sm", "lg"],
+        },
         disabled: {
             control: "boolean",
         },
@@ -36,6 +40,16 @@ export const WithLabel: Story = {
                 placeholder="Tell us about yourself"
                 rows={4}
             />
+        </Stack>
+    ),
+};
+
+export const Sizes: Story = {
+    render: () => (
+        <Stack gap="sm" className="w-80">
+            <Textarea size="sm" placeholder="Small" rows={2} />
+            <Textarea size="default" placeholder="Default" rows={2} />
+            <Textarea size="lg" placeholder="Large" rows={2} />
         </Stack>
     ),
 };
@@ -66,7 +80,7 @@ export const WithError: Story = {
                 className="border-destructive focus-visible:ring-destructive"
                 rows={4}
             />
-            <p className="text-sm text-destructive">Description must be at least 10 characters</p>
+            <p className="text-xs text-destructive">Description must be at least 10 characters</p>
         </Stack>
     ),
 };

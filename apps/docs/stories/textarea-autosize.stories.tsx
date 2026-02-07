@@ -17,9 +17,9 @@ const meta = {
         maxRows: {
             control: { type: "number", min: 1, max: 20 },
         },
-        density: {
+        size: {
             control: { type: "select" },
-            options: ["default", "compact"],
+            options: ["default", "sm", "lg"],
         },
         disabled: {
             control: "boolean",
@@ -52,13 +52,23 @@ export const WithLabel: Story = {
     ),
 };
 
-export const Compact: Story = {
+export const Small: Story = {
     args: {
-        placeholder: "Compact textarea...",
-        density: "compact",
+        placeholder: "Small textarea...",
+        size: "sm",
         minRows: 2,
         maxRows: 6,
     },
+};
+
+export const Sizes: Story = {
+    render: () => (
+        <Stack gap="sm" className="w-80">
+            <TextareaAutosize size="sm" placeholder="Small" minRows={2} maxRows={4} />
+            <TextareaAutosize size="default" placeholder="Default" minRows={2} maxRows={4} />
+            <TextareaAutosize size="lg" placeholder="Large" minRows={2} maxRows={4} />
+        </Stack>
+    ),
 };
 
 export const LongText: Story = {

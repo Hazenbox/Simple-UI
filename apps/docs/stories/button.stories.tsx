@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { Button } from "@acme/ui/button";
+import { Stack } from "@acme/ui/primitives/stack";
 
 const meta = {
   title: "UI/Button",
@@ -13,7 +14,7 @@ const meta = {
     },
     size: {
       control: { type: "select" },
-      options: ["default", "sm", "lg", "icon"],
+      options: ["default", "sm", "lg", "xl", "icon"],
     },
   },
   args: {
@@ -64,4 +65,36 @@ export const Link: Story = {
     variant: "link",
     children: "Link",
   },
+};
+
+export const Sizes: Story = {
+  render: () => (
+    <Stack direction="row" gap="sm" className="items-center">
+      <Button size="sm">Small</Button>
+      <Button size="default">Default</Button>
+      <Button size="lg">Large</Button>
+      <Button size="xl">Extra Large</Button>
+    </Stack>
+  ),
+};
+
+export const AllVariants: Story = {
+  render: () => (
+    <Stack gap="sm">
+      <Stack direction="row" gap="sm">
+        <Button variant="default">Default</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="destructive">Destructive</Button>
+        <Button variant="outline">Outline</Button>
+        <Button variant="ghost">Ghost</Button>
+        <Button variant="link">Link</Button>
+      </Stack>
+      <Stack direction="row" gap="sm" className="items-center">
+        <Button size="sm">Small</Button>
+        <Button size="default">Default (32px)</Button>
+        <Button size="lg">Large (36px)</Button>
+        <Button size="xl">XL (40px)</Button>
+      </Stack>
+    </Stack>
+  ),
 };
