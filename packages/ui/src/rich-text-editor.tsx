@@ -106,7 +106,7 @@ export const RichTextEditor = React.forwardRef<
                 contentEditable
                 onInput={handleInput}
                 className={cn(
-                    "min-h-48 rounded-lg border bg-background p-4 text-sm outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+                    "min-h-48 rounded-lg border bg-background p-4 text-sm outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1",
                     "prose prose-sm dark:prose-invert max-w-none"
                 )}
                 {...props}

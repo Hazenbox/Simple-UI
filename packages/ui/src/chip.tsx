@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
 
 const chipVariants = cva(
-    "inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+    "inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1",
     {
         variants: {
             variant: {
@@ -41,7 +41,7 @@ export const Chip = React.forwardRef<HTMLDivElement, ChipProps>(
                 {onDelete && (
                     <button
                         onClick={onDelete}
-                        className="ml-1 rounded-full outline-none ring-offset-background hover:bg-black/10 focus:ring-2 focus:ring-ring focus:ring-offset-2 dark:hover:bg-white/10"
+                        className="ml-1 rounded-full outline-none ring-offset-background hover:bg-black/10 focus:ring-2 focus:ring-ring focus:ring-offset-1 dark:hover:bg-white/10"
                     >
                         <X className="h-3 w-3" />
                         <span className="sr-only">Remove</span>

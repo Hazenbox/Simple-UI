@@ -6,7 +6,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "./lib/utils"
 
 const skipNavVariants = cva(
-  "fixed left-0 top-0 z-50 -translate-x-full focus:translate-x-0 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "fixed left-0 top-0 z-50 -translate-x-full focus:translate-x-0 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1",
   {
     variants: {
       variant: {

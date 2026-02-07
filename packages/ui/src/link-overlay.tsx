@@ -34,7 +34,7 @@ const LinkOverlay = React.forwardRef<HTMLAnchorElement, LinkOverlayProps>(
         rel: "noopener noreferrer",
       }),
       className: cn(
-        "absolute inset-0 z-10 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md",
+        "absolute inset-0 z-10 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 rounded-md",
         className
       ),
       ...(asChild ? {} : {
