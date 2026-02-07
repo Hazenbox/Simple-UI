@@ -11,7 +11,7 @@ const Toolbar = React.forwardRef<
     <ToolbarPrimitive.Root
         ref={ref}
         className={cn(
-            "flex w-full min-w-max items-center gap-1 rounded-md border bg-background p-1",
+            "flex w-full min-w-max items-center gap-0.5 rounded-lg border bg-background p-0.5",
             className
         )}
         {...props}
@@ -25,7 +25,7 @@ const ToolbarSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
     <ToolbarPrimitive.Separator
         ref={ref}
-        className={cn("mx-2 h-6 w-px bg-border", className)}
+        className={cn("mx-1 h-5 w-px bg-border", className)}
         {...props}
     />
 ));

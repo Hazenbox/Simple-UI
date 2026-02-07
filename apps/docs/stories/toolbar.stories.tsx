@@ -6,6 +6,7 @@ import {
     ToolbarToggleGroup,
     ToolbarToggleItem,
 } from "@acme/ui/toolbar";
+import { Button } from "@acme/ui/button";
 import {
     Bold,
     Italic,
@@ -15,6 +16,13 @@ import {
     AlignRight,
     Link,
     Image,
+    Plus,
+    FileText,
+    Copy,
+    Save,
+    Play,
+    ChevronDown,
+    CornerDownLeft,
 } from "lucide-react";
 
 const meta = {
@@ -32,14 +40,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     render: () => (
         <Toolbar>
-            <ToolbarButton>
-                <Bold className="h-4 w-4" />
+            <ToolbarButton aria-label="Bold">
+                <Bold className="h-3.5 w-3.5" />
             </ToolbarButton>
-            <ToolbarButton>
-                <Italic className="h-4 w-4" />
+            <ToolbarButton aria-label="Italic">
+                <Italic className="h-3.5 w-3.5" />
             </ToolbarButton>
-            <ToolbarButton>
-                <Underline className="h-4 w-4" />
+            <ToolbarButton aria-label="Underline">
+                <Underline className="h-3.5 w-3.5" />
             </ToolbarButton>
         </Toolbar>
     ),
@@ -48,21 +56,21 @@ export const Default: Story = {
 export const WithSeparator: Story = {
     render: () => (
         <Toolbar>
-            <ToolbarButton>
-                <Bold className="h-4 w-4" />
+            <ToolbarButton aria-label="Bold">
+                <Bold className="h-3.5 w-3.5" />
             </ToolbarButton>
-            <ToolbarButton>
-                <Italic className="h-4 w-4" />
+            <ToolbarButton aria-label="Italic">
+                <Italic className="h-3.5 w-3.5" />
             </ToolbarButton>
-            <ToolbarButton>
-                <Underline className="h-4 w-4" />
+            <ToolbarButton aria-label="Underline">
+                <Underline className="h-3.5 w-3.5" />
             </ToolbarButton>
             <ToolbarSeparator />
-            <ToolbarButton>
-                <Link className="h-4 w-4" />
+            <ToolbarButton aria-label="Insert link">
+                <Link className="h-3.5 w-3.5" />
             </ToolbarButton>
-            <ToolbarButton>
-                <Image className="h-4 w-4" />
+            <ToolbarButton aria-label="Insert image">
+                <Image className="h-3.5 w-3.5" />
             </ToolbarButton>
         </Toolbar>
     ),
@@ -72,26 +80,26 @@ export const WithToggleGroup: Story = {
     render: () => (
         <Toolbar>
             <ToolbarToggleGroup type="multiple">
-                <ToolbarToggleItem value="bold">
-                    <Bold className="h-4 w-4" />
+                <ToolbarToggleItem value="bold" aria-label="Bold">
+                    <Bold className="h-3.5 w-3.5" />
                 </ToolbarToggleItem>
-                <ToolbarToggleItem value="italic">
-                    <Italic className="h-4 w-4" />
+                <ToolbarToggleItem value="italic" aria-label="Italic">
+                    <Italic className="h-3.5 w-3.5" />
                 </ToolbarToggleItem>
-                <ToolbarToggleItem value="underline">
-                    <Underline className="h-4 w-4" />
+                <ToolbarToggleItem value="underline" aria-label="Underline">
+                    <Underline className="h-3.5 w-3.5" />
                 </ToolbarToggleItem>
             </ToolbarToggleGroup>
             <ToolbarSeparator />
             <ToolbarToggleGroup type="single">
-                <ToolbarToggleItem value="left">
-                    <AlignLeft className="h-4 w-4" />
+                <ToolbarToggleItem value="left" aria-label="Align left">
+                    <AlignLeft className="h-3.5 w-3.5" />
                 </ToolbarToggleItem>
-                <ToolbarToggleItem value="center">
-                    <AlignCenter className="h-4 w-4" />
+                <ToolbarToggleItem value="center" aria-label="Align center">
+                    <AlignCenter className="h-3.5 w-3.5" />
                 </ToolbarToggleItem>
-                <ToolbarToggleItem value="right">
-                    <AlignRight className="h-4 w-4" />
+                <ToolbarToggleItem value="right" aria-label="Align right">
+                    <AlignRight className="h-3.5 w-3.5" />
                 </ToolbarToggleItem>
             </ToolbarToggleGroup>
         </Toolbar>
@@ -100,17 +108,20 @@ export const WithToggleGroup: Story = {
 
 export const TextEditor: Story = {
     render: () => (
-        <div className="w-full max-w-2xl space-y-4">
+        <div className="w-full max-w-2xl space-y-3">
             <Toolbar className="w-full">
                 <ToolbarToggleGroup type="multiple">
                     <ToolbarToggleItem value="bold" aria-label="Bold">
-                        <Bold className="h-4 w-4" />
+                        <Bold className="h-3.5 w-3.5" />
                     </ToolbarToggleItem>
                     <ToolbarToggleItem value="italic" aria-label="Italic">
-                        <Italic className="h-4 w-4" />
+                        <Italic className="h-3.5 w-3.5" />
                     </ToolbarToggleItem>
-                    <ToolbarToggleItem value="underline" aria-label="Underline">
-                        <Underline className="h-4 w-4" />
+                    <ToolbarToggleItem
+                        value="underline"
+                        aria-label="Underline"
+                    >
+                        <Underline className="h-3.5 w-3.5" />
                     </ToolbarToggleItem>
                 </ToolbarToggleGroup>
 
@@ -118,28 +129,111 @@ export const TextEditor: Story = {
 
                 <ToolbarToggleGroup type="single">
                     <ToolbarToggleItem value="left" aria-label="Align left">
-                        <AlignLeft className="h-4 w-4" />
+                        <AlignLeft className="h-3.5 w-3.5" />
                     </ToolbarToggleItem>
-                    <ToolbarToggleItem value="center" aria-label="Align center">
-                        <AlignCenter className="h-4 w-4" />
+                    <ToolbarToggleItem
+                        value="center"
+                        aria-label="Align center"
+                    >
+                        <AlignCenter className="h-3.5 w-3.5" />
                     </ToolbarToggleItem>
-                    <ToolbarToggleItem value="right" aria-label="Align right">
-                        <AlignRight className="h-4 w-4" />
+                    <ToolbarToggleItem
+                        value="right"
+                        aria-label="Align right"
+                    >
+                        <AlignRight className="h-3.5 w-3.5" />
                     </ToolbarToggleItem>
                 </ToolbarToggleGroup>
 
                 <ToolbarSeparator />
 
                 <ToolbarButton aria-label="Insert link">
-                    <Link className="h-4 w-4" />
+                    <Link className="h-3.5 w-3.5" />
                 </ToolbarButton>
                 <ToolbarButton aria-label="Insert image">
-                    <Image className="h-4 w-4" />
+                    <Image className="h-3.5 w-3.5" />
                 </ToolbarButton>
             </Toolbar>
 
-            <div className="min-h-[200px] rounded-md border p-4">
-                <p className="text-muted-foreground">Editor content area...</p>
+            <div className="min-h-40 rounded-lg border p-3">
+                <p className="text-xs text-muted-foreground">
+                    Editor content area...
+                </p>
+            </div>
+        </div>
+    ),
+};
+
+export const WithDropdownAndButton: Story = {
+    render: () => (
+        <div className="flex flex-col gap-4">
+            {/* Toolbar A - with action icons, execute button, toggle, and accent */}
+            <div className="flex items-center gap-2">
+                <span className="text-xs text-muted-foreground">A</span>
+                <Toolbar>
+                    <ToolbarButton aria-label="Add new">
+                        <Plus className="h-3.5 w-3.5" />
+                    </ToolbarButton>
+                    <ToolbarButton aria-label="Documents">
+                        <FileText className="h-3.5 w-3.5" />
+                    </ToolbarButton>
+                    <ToolbarButton aria-label="Copy">
+                        <Copy className="h-3.5 w-3.5" />
+                    </ToolbarButton>
+                    <ToolbarButton aria-label="Save">
+                        <Save className="h-3.5 w-3.5" />
+                    </ToolbarButton>
+                    <ToolbarSeparator />
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-7 gap-1.5 rounded-md px-2 text-xs"
+                    >
+                        <Play className="h-3 w-3" />
+                        Execute workflow
+                        <kbd className="ml-1 text-xs text-muted-foreground">
+                            Ctrl
+                        </kbd>
+                        <CornerDownLeft className="h-3 w-3 text-muted-foreground" />
+                    </Button>
+                </Toolbar>
+            </div>
+
+            {/* Toolbar B - compact variant */}
+            <div className="flex items-center gap-2">
+                <span className="text-xs text-muted-foreground">B</span>
+                <Toolbar>
+                    <ToolbarButton aria-label="Add new">
+                        <Plus className="h-3.5 w-3.5" />
+                    </ToolbarButton>
+                    <ToolbarButton aria-label="Documents">
+                        <FileText className="h-3.5 w-3.5" />
+                    </ToolbarButton>
+                    <ToolbarButton aria-label="Copy">
+                        <Copy className="h-3.5 w-3.5" />
+                    </ToolbarButton>
+                    <ToolbarButton aria-label="Save">
+                        <Save className="h-3.5 w-3.5" />
+                    </ToolbarButton>
+                    <ToolbarSeparator />
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-7 gap-1.5 rounded-md px-2 text-xs"
+                    >
+                        <Play className="h-3 w-3" />
+                        Execute workflow
+                    </Button>
+                    <ToolbarSeparator />
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-7 gap-1 rounded-md px-2 text-xs"
+                    >
+                        Options
+                        <ChevronDown className="h-3 w-3" />
+                    </Button>
+                </Toolbar>
             </div>
         </div>
     ),
