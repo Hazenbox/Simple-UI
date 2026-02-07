@@ -171,6 +171,30 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-trend-up: var(--trend-up);
+  --color-trend-down: var(--trend-down);
+
+  /* Avatar Identity Colors */
+  --color-avatar-red: var(--avatar-red);
+  --color-avatar-orange: var(--avatar-orange);
+  --color-avatar-amber: var(--avatar-amber);
+  --color-avatar-yellow: var(--avatar-yellow);
+  --color-avatar-lime: var(--avatar-lime);
+  --color-avatar-green: var(--avatar-green);
+  --color-avatar-emerald: var(--avatar-emerald);
+  --color-avatar-teal: var(--avatar-teal);
+  --color-avatar-cyan: var(--avatar-cyan);
+  --color-avatar-sky: var(--avatar-sky);
+  --color-avatar-blue: var(--avatar-blue);
+  --color-avatar-indigo: var(--avatar-indigo);
+  --color-avatar-violet: var(--avatar-violet);
+  --color-avatar-purple: var(--avatar-purple);
+  --color-avatar-fuchsia: var(--avatar-fuchsia);
+  --color-avatar-pink: var(--avatar-pink);
+  --color-avatar-rose: var(--avatar-rose);
+  --color-avatar-brown: var(--avatar-brown);
+  --color-avatar-slate: var(--avatar-slate);
+  --color-avatar-zinc: var(--avatar-zinc);
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -205,10 +229,36 @@
     --radius: 0.5rem;
     --success: hsl(142 71% 45%);
     --success-foreground: hsl(0 0% 100%);
-    --warning: hsl(38 92% 50%);
+    --warning: hsl(25 95% 40%);
     --warning-foreground: hsl(0 0% 100%);
     --info: hsl(217 91% 60%);
     --info-foreground: hsl(0 0% 100%);
+
+    /* Trend Colors - WCAG AA accessible */
+    --trend-up: hsl(142 76% 30%);
+    --trend-down: hsl(0 72% 40%);
+
+    /* Avatar Identity Colors - WCAG AA accessible on white */
+    --avatar-red: hsl(0 72% 44%);
+    --avatar-orange: hsl(24 90% 40%);
+    --avatar-amber: hsl(32 95% 38%);
+    --avatar-yellow: hsl(40 80% 36%);
+    --avatar-lime: hsl(80 60% 32%);
+    --avatar-green: hsl(142 64% 32%);
+    --avatar-emerald: hsl(160 72% 28%);
+    --avatar-teal: hsl(174 68% 28%);
+    --avatar-cyan: hsl(186 72% 30%);
+    --avatar-sky: hsl(200 80% 38%);
+    --avatar-blue: hsl(217 80% 44%);
+    --avatar-indigo: hsl(234 70% 48%);
+    --avatar-violet: hsl(258 60% 48%);
+    --avatar-purple: hsl(270 60% 46%);
+    --avatar-fuchsia: hsl(292 56% 44%);
+    --avatar-pink: hsl(330 64% 44%);
+    --avatar-rose: hsl(346 72% 44%);
+    --avatar-brown: hsl(20 40% 36%);
+    --avatar-slate: hsl(215 20% 40%);
+    --avatar-zinc: hsl(240 6% 40%);
   }
 
   .dark {
@@ -233,10 +283,36 @@
     --ring: hsl(240 4.9% 83.9%);
     --success: hsl(142 71% 55%);
     --success-foreground: hsl(0 0% 100%);
-    --warning: hsl(38 92% 60%);
+    --warning: hsl(40 96% 64%);
     --warning-foreground: hsl(240 10% 3.9%);
     --info: hsl(217 91% 70%);
     --info-foreground: hsl(0 0% 100%);
+
+    /* Trend Colors - accessible on dark backgrounds */
+    --trend-up: hsl(142 70% 65%);
+    --trend-down: hsl(0 85% 70%);
+
+    /* Avatar Identity Colors - accessible on dark backgrounds */
+    --avatar-red: hsl(0 80% 68%);
+    --avatar-orange: hsl(24 92% 66%);
+    --avatar-amber: hsl(32 95% 62%);
+    --avatar-yellow: hsl(44 90% 60%);
+    --avatar-lime: hsl(80 66% 58%);
+    --avatar-green: hsl(142 64% 58%);
+    --avatar-emerald: hsl(160 60% 56%);
+    --avatar-teal: hsl(174 60% 56%);
+    --avatar-cyan: hsl(186 68% 58%);
+    --avatar-sky: hsl(200 80% 64%);
+    --avatar-blue: hsl(217 80% 68%);
+    --avatar-indigo: hsl(234 72% 72%);
+    --avatar-violet: hsl(258 64% 72%);
+    --avatar-purple: hsl(270 64% 70%);
+    --avatar-fuchsia: hsl(292 60% 68%);
+    --avatar-pink: hsl(330 68% 68%);
+    --avatar-rose: hsl(346 76% 68%);
+    --avatar-brown: hsl(20 44% 58%);
+    --avatar-slate: hsl(215 24% 64%);
+    --avatar-zinc: hsl(240 8% 64%);
   }
 }
 
