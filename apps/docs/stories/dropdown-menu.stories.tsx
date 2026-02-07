@@ -238,7 +238,7 @@ export const WithSections: Story = {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-52">
                 <DropdownMenuGroup>
-                    <DropdownMenuLabel className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                    <DropdownMenuLabel className="text-xs font-medium text-muted-foreground">
                         Create
                     </DropdownMenuLabel>
                     <DropdownMenuItem>
@@ -256,7 +256,7 @@ export const WithSections: Story = {
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                    <DropdownMenuLabel className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                    <DropdownMenuLabel className="text-xs font-medium text-muted-foreground">
                         Communication
                     </DropdownMenuLabel>
                     <DropdownMenuItem>
@@ -270,7 +270,7 @@ export const WithSections: Story = {
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                    <DropdownMenuLabel className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                    <DropdownMenuLabel className="text-xs font-medium text-muted-foreground">
                         Resources
                     </DropdownMenuLabel>
                     <DropdownMenuItem>

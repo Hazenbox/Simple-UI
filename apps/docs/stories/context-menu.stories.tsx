@@ -193,13 +193,17 @@ export const WithSearchBar: Story = {
                 Right click for searchable menu
             </ContextMenuTrigger>
             <ContextMenuContent className="w-52">
-                <div className="flex items-center gap-2 rounded-md border bg-background px-2 py-1 mx-1 mb-1">
+                <div
+                    className="flex items-center gap-2 rounded-lg border bg-background px-2 py-1 mx-1 mb-1"
+                    onFocusCapture={(e) => e.stopPropagation()}
+                >
                     <Search className="h-3.5 w-3.5 text-muted-foreground" />
                     <input
                         className="flex-1 bg-transparent text-xs outline-none placeholder:text-muted-foreground"
                         placeholder="Search..."
+                        onKeyDown={(e) => e.stopPropagation()}
                     />
-                    <kbd className="text-xs text-muted-foreground">
+                    <kbd className="font-mono text-xs text-muted-foreground">
                         Ctrl+K
                     </kbd>
                 </div>
@@ -229,7 +233,7 @@ export const WithSections: Story = {
             </ContextMenuTrigger>
             <ContextMenuContent className="w-52">
                 <ContextMenuGroup>
-                    <ContextMenuLabel className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                    <ContextMenuLabel className="text-xs font-medium text-muted-foreground">
                         Edit
                     </ContextMenuLabel>
                     <ContextMenuItem>
@@ -250,7 +254,7 @@ export const WithSections: Story = {
                 </ContextMenuGroup>
                 <ContextMenuSeparator />
                 <ContextMenuGroup>
-                    <ContextMenuLabel className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                    <ContextMenuLabel className="text-xs font-medium text-muted-foreground">
                         Navigate
                     </ContextMenuLabel>
                     <ContextMenuItem>
@@ -268,7 +272,7 @@ export const WithSections: Story = {
                 </ContextMenuGroup>
                 <ContextMenuSeparator />
                 <ContextMenuGroup>
-                    <ContextMenuLabel className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                    <ContextMenuLabel className="text-xs font-medium text-muted-foreground">
                         Tools
                     </ContextMenuLabel>
                     <ContextMenuItem>

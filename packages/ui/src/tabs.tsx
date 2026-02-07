@@ -59,7 +59,7 @@ const TabsTrigger = React.forwardRef<
                 variant === "default" &&
                     "rounded-lg data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm",
                 variant === "underline" &&
-                    "rounded-none border-b-2 border-transparent pb-1.5 data-[state=active]:border-primary data-[state=active]:text-foreground",
+                    "rounded-none border-b-2 border-transparent -mb-px data-[state=active]:border-primary data-[state=active]:text-foreground",
                 className
             )}
             {...props}

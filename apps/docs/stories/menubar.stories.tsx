@@ -115,23 +115,23 @@ export const WithIcons: Story = {
                 </MenubarTrigger>
                 <MenubarContent>
                     <MenubarItem>
-                        <Plus className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        <Plus />
                         New File
                         <MenubarShortcut>Ctrl+N</MenubarShortcut>
                     </MenubarItem>
                     <MenubarItem>
-                        <FolderOpen className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        <FolderOpen />
                         Open...
                         <MenubarShortcut>Ctrl+O</MenubarShortcut>
                     </MenubarItem>
                     <MenubarItem>
-                        <Save className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        <Save />
                         Save
                         <MenubarShortcut>Ctrl+S</MenubarShortcut>
                     </MenubarItem>
                     <MenubarSeparator />
                     <MenubarItem>
-                        <Printer className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        <Printer />
                         Print
                         <MenubarShortcut>Ctrl+P</MenubarShortcut>
                     </MenubarItem>
@@ -144,26 +144,26 @@ export const WithIcons: Story = {
                 </MenubarTrigger>
                 <MenubarContent>
                     <MenubarItem>
-                        <Undo className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        <Undo />
                         Undo
                         <MenubarShortcut>Ctrl+Z</MenubarShortcut>
                     </MenubarItem>
                     <MenubarItem>
-                        <Redo className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        <Redo />
                         Redo
                         <MenubarShortcut>Ctrl+Y</MenubarShortcut>
                     </MenubarItem>
                     <MenubarSeparator />
                     <MenubarItem>
-                        <Scissors className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        <Scissors />
                         Cut
                     </MenubarItem>
                     <MenubarItem>
-                        <Copy className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        <Copy />
                         Copy
                     </MenubarItem>
                     <MenubarItem>
-                        <ClipboardPaste className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        <ClipboardPaste />
                         Paste
                     </MenubarItem>
                 </MenubarContent>
@@ -180,7 +180,7 @@ export const WithIcons: Story = {
                     <MenubarCheckboxItem>Show Sidebar</MenubarCheckboxItem>
                     <MenubarSeparator />
                     <MenubarItem>
-                        <Maximize className="mr-2 h-3.5 w-3.5 text-muted-foreground" />
+                        <Maximize />
                         Full Screen
                     </MenubarItem>
                 </MenubarContent>

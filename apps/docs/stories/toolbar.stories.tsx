@@ -187,11 +187,11 @@ export const WithDropdownAndButton: Story = {
                     <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 gap-1.5 rounded-md px-2 text-xs"
+                        className="h-7 gap-1.5 rounded-lg px-2 text-xs"
                     >
                         <Play className="h-3 w-3" />
                         Execute workflow
-                        <kbd className="ml-1 text-xs text-muted-foreground">
+                        <kbd className="ml-1 font-mono text-xs text-muted-foreground">
                             Ctrl
                         </kbd>
                         <CornerDownLeft className="h-3 w-3 text-muted-foreground" />
@@ -219,7 +219,7 @@ export const WithDropdownAndButton: Story = {
                     <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 gap-1.5 rounded-md px-2 text-xs"
+                        className="h-7 gap-1.5 rounded-lg px-2 text-xs"
                     >
                         <Play className="h-3 w-3" />
                         Execute workflow
@@ -228,7 +228,7 @@ export const WithDropdownAndButton: Story = {
                     <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 gap-1 rounded-md px-2 text-xs"
+                        className="h-7 gap-1 rounded-lg px-2 text-xs"
                     >
                         Options
                         <ChevronDown className="h-3 w-3" />
