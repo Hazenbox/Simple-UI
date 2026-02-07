@@ -8,12 +8,16 @@ import { Button } from "./button"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>[0]
+type CarouselSize = "sm" | "default" | "lg"
+type CarouselEmphasis = "default" | "filled" | "minimal"
 
 interface CarouselProps {
     opts?: UseCarouselParameters
     plugins?: any[]
     orientation?: "horizontal" | "vertical"
     setApi?: (api: CarouselApi) => void
+    size?: CarouselSize
+    emphasis?: CarouselEmphasis
 }
 
 type CarouselContextProps = {
@@ -37,6 +41,30 @@ function useCarousel() {
     return context
 }
 
+const navSizeMap: Record<CarouselSize, { button: string; icon: string }> = {
+    sm: { button: "h-6 w-6", icon: "h-3 w-3" },
+    default: { button: "h-8 w-8", icon: "h-4 w-4" },
+    lg: { button: "h-10 w-10", icon: "h-5 w-5" },
+}
+
+const navOffsetMap: Record<
+    CarouselSize,
+    { horizontal: { prev: string; next: string }; vertical: { prev: string; next: string } }
+> = {
+    sm: {
+        horizontal: { prev: "-left-9", next: "-right-9" },
+        vertical: { prev: "-top-9", next: "-bottom-9" },
+    },
+    default: {
+        horizontal: { prev: "-left-12", next: "-right-12" },
+        vertical: { prev: "-top-12", next: "-bottom-12" },
+    },
+    lg: {
+        horizontal: { prev: "-left-14", next: "-right-14" },
+        vertical: { prev: "-top-14", next: "-bottom-14" },
+    },
+}
+
 const Carousel = React.forwardRef<
     HTMLDivElement,
     React.HTMLAttributes<HTMLDivElement> & CarouselProps
@@ -49,6 +77,8 @@ const Carousel = React.forwardRef<
             plugins,
             className,
             children,
+            size = "default",
+            emphasis = "default",
             ...props
         },
         ref
@@ -122,11 +152,14 @@ const Carousel = React.forwardRef<
                     api: api,
                     opts,
                     orientation:
-                        orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
+                        orientation ||
+                        (opts?.axis === "y" ? "vertical" : "horizontal"),
                     scrollPrev,
                     scrollNext,
                     canScrollPrev,
                     canScrollNext,
+                    size,
+                    emphasis,
                 }}
             >
                 <div
@@ -157,7 +190,9 @@ const CarouselContent = React.forwardRef<
                 ref={ref}
                 className={cn(
                     "flex",
-                    orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
+                    orientation === "horizontal"
+                        ? "-ml-4"
+                        : "-mt-4 flex-col",
                     className
                 )}
                 {...props}
@@ -189,29 +224,50 @@ const CarouselItem = React.forwardRef<
 })
 CarouselItem.displayName = "CarouselItem"
 
+function getNavButtonVariant(emphasis: CarouselEmphasis) {
+    switch (emphasis) {
+        case "filled":
+            return "secondary" as const
+        case "minimal":
+            return "ghost" as const
+        default:
+            return "outline" as const
+    }
+}
+
 const CarouselPrevious = React.forwardRef<
     HTMLButtonElement,
     React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-    const { orientation, scrollPrev, canScrollPrev } = useCarousel()
+>(({ className, variant, size = "icon", ...props }, ref) => {
+    const {
+        orientation,
+        scrollPrev,
+        canScrollPrev,
+        size: carouselSize = "default",
+        emphasis = "default",
+    } = useCarousel()
+    const sizeConfig = navSizeMap[carouselSize]
+    const offsets = navOffsetMap[carouselSize]
+    const resolvedVariant = variant ?? getNavButtonVariant(emphasis)
 
     return (
         <Button
             ref={ref}
-            variant={variant}
+            variant={resolvedVariant}
             size={size}
             className={cn(
-                "absolute  h-8 w-8 rounded-full",
+                "absolute rounded-full",
+                sizeConfig.button,
                 orientation === "horizontal"
-                    ? "-left-12 top-1/2 -translate-y-1/2"
-                    : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+                    ? `${offsets.horizontal.prev} top-1/2 -translate-y-1/2`
+                    : `${offsets.vertical.prev} left-1/2 -translate-x-1/2 rotate-90`,
                 className
             )}
             disabled={!canScrollPrev}
             onClick={scrollPrev}
             {...props}
         >
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className={sizeConfig.icon} />
             <span className="sr-only">Previous slide</span>
         </Button>
     )
@@ -221,26 +277,36 @@ CarouselPrevious.displayName = "CarouselPrevious"
 const CarouselNext = React.forwardRef<
     HTMLButtonElement,
     React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-    const { orientation, scrollNext, canScrollNext } = useCarousel()
+>(({ className, variant, size = "icon", ...props }, ref) => {
+    const {
+        orientation,
+        scrollNext,
+        canScrollNext,
+        size: carouselSize = "default",
+        emphasis = "default",
+    } = useCarousel()
+    const sizeConfig = navSizeMap[carouselSize]
+    const offsets = navOffsetMap[carouselSize]
+    const resolvedVariant = variant ?? getNavButtonVariant(emphasis)
 
     return (
         <Button
             ref={ref}
-            variant={variant}
+            variant={resolvedVariant}
             size={size}
             className={cn(
-                "absolute h-8 w-8 rounded-full",
+                "absolute rounded-full",
+                sizeConfig.button,
                 orientation === "horizontal"
-                    ? "-right-12 top-1/2 -translate-y-1/2"
-                    : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+                    ? `${offsets.horizontal.next} top-1/2 -translate-y-1/2`
+                    : `${offsets.vertical.next} left-1/2 -translate-x-1/2 rotate-90`,
                 className
             )}
             disabled={!canScrollNext}
             onClick={scrollNext}
             {...props}
         >
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className={sizeConfig.icon} />
             <span className="sr-only">Next slide</span>
         </Button>
     )
@@ -249,6 +315,8 @@ CarouselNext.displayName = "CarouselNext"
 
 export {
     type CarouselApi,
+    type CarouselSize,
+    type CarouselEmphasis,
     Carousel,
     CarouselContent,
     CarouselItem,

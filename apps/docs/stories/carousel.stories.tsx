@@ -28,8 +28,10 @@ export const Default: Story = {
                     <CarouselItem key={index}>
                         <div className="p-1">
                             <Card>
-                                <CardContent className="flex aspect-square items-center justify-center p-6">
-                                    <span className="text-4xl font-semibold">{index + 1}</span>
+                                <CardContent className="flex aspect-square items-center justify-center p-4">
+                                    <span className="text-2xl font-semibold">
+                                        {index + 1}
+                                    </span>
                                 </CardContent>
                             </Card>
                         </div>
@@ -47,11 +49,112 @@ export const MultipleItems: Story = {
         <Carousel className="w-full max-w-sm">
             <CarouselContent className="-ml-2 md:-ml-4">
                 {Array.from({ length: 10 }).map((_, index) => (
-                    <CarouselItem key={index} className="pl-2 md:basis-1/2 md:pl-4">
+                    <CarouselItem
+                        key={index}
+                        className="pl-2 md:basis-1/2 md:pl-4"
+                    >
                         <div className="p-1">
                             <Card>
-                                <CardContent className="flex aspect-square items-center justify-center p-6">
-                                    <span className="text-2xl font-semibold">{index + 1}</span>
+                                <CardContent className="flex aspect-square items-center justify-center p-4">
+                                    <span className="text-xl font-semibold">
+                                        {index + 1}
+                                    </span>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+        </Carousel>
+    ),
+};
+
+export const SmallSize: Story = {
+    render: () => (
+        <Carousel size="sm" className="w-full max-w-xs">
+            <CarouselContent>
+                {Array.from({ length: 5 }).map((_, index) => (
+                    <CarouselItem key={index}>
+                        <div className="p-1">
+                            <Card>
+                                <CardContent className="flex aspect-square items-center justify-center p-3">
+                                    <span className="text-lg font-semibold">
+                                        {index + 1}
+                                    </span>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+        </Carousel>
+    ),
+};
+
+export const LargeSize: Story = {
+    render: () => (
+        <Carousel size="lg" className="w-full max-w-md">
+            <CarouselContent>
+                {Array.from({ length: 5 }).map((_, index) => (
+                    <CarouselItem key={index}>
+                        <div className="p-1">
+                            <Card>
+                                <CardContent className="flex aspect-square items-center justify-center p-4">
+                                    <span className="text-2xl font-semibold">
+                                        {index + 1}
+                                    </span>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+        </Carousel>
+    ),
+};
+
+export const FilledNavigation: Story = {
+    render: () => (
+        <Carousel emphasis="filled" className="w-full max-w-xs">
+            <CarouselContent>
+                {Array.from({ length: 5 }).map((_, index) => (
+                    <CarouselItem key={index}>
+                        <div className="p-1">
+                            <Card>
+                                <CardContent className="flex aspect-square items-center justify-center p-4">
+                                    <span className="text-2xl font-semibold">
+                                        {index + 1}
+                                    </span>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+        </Carousel>
+    ),
+};
+
+export const MinimalNavigation: Story = {
+    render: () => (
+        <Carousel emphasis="minimal" className="w-full max-w-xs">
+            <CarouselContent>
+                {Array.from({ length: 5 }).map((_, index) => (
+                    <CarouselItem key={index}>
+                        <div className="p-1">
+                            <Card>
+                                <CardContent className="flex aspect-square items-center justify-center p-4">
+                                    <span className="text-2xl font-semibold">
+                                        {index + 1}
+                                    </span>
                                 </CardContent>
                             </Card>
                         </div>
