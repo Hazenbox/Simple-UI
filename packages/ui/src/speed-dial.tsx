@@ -52,7 +52,7 @@ export const SpeedDialTrigger = React.forwardRef<
             ref={ref}
             onClick={() => setIsOpen(!isOpen)}
             className={cn(
-                "flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-transform hover:scale-105",
+                "flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-transform hover:scale-105",
                 isOpen && "rotate-45",
                 className
             )}
@@ -111,7 +111,7 @@ export const SpeedDialAction = React.forwardRef<
             <button
                 ref={ref}
                 className={cn(
-                    "flex h-12 w-12 items-center justify-center rounded-full bg-background shadow-lg transition-transform hover:scale-105",
+                    "flex h-10 w-10 items-center justify-center rounded-full bg-background shadow-lg transition-transform hover:scale-105",
                     className
                 )}
                 {...props}

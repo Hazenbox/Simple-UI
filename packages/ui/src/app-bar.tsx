@@ -17,7 +17,7 @@ export const AppBar = React.forwardRef<HTMLDivElement, AppBarProps>(
             <header
                 ref={ref}
                 className={cn(
-                    "flex h-16 items-center border-b bg-background px-4",
+                    "flex h-12 items-center border-b bg-background px-4",
                     positionClasses[position],
                     className
                 )}

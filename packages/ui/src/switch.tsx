@@ -11,9 +11,9 @@ const switchVariants = cva(
     {
         variants: {
             size: {
-                default: "h-6 w-11",
-                sm: "h-5 w-9",
-                lg: "h-7 w-14",
+                default: "h-5 w-9",
+                sm: "h-4 w-7",
+                lg: "h-6 w-11",
             },
         },
         defaultVariants: {
@@ -27,9 +27,9 @@ const switchThumbVariants = cva(
     {
         variants: {
             size: {
-                default: "h-5 w-5 data-[state=checked]:translate-x-5",
-                sm: "h-4 w-4 data-[state=checked]:translate-x-4",
-                lg: "h-6 w-6 data-[state=checked]:translate-x-7",
+                default: "h-4 w-4 data-[state=checked]:translate-x-4",
+                sm: "h-3 w-3 data-[state=checked]:translate-x-3",
+                lg: "h-5 w-5 data-[state=checked]:translate-x-5",
             },
         },
         defaultVariants: {

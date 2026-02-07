@@ -42,7 +42,7 @@ const stackVariants = cva("flex", {
     },
     defaultVariants: {
         direction: "column",
-        gap: "md",
+        gap: "sm",
         align: "stretch",
         justify: "start",
         wrap: false,

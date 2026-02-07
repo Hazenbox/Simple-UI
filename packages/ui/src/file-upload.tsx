@@ -96,13 +96,13 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
                     className={cn(
-                        "flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-8 transition-colors",
+                        "flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-6 transition-colors",
                         isDragging
                             ? "border-primary bg-primary/5"
                             : "border-muted-foreground/25 hover:border-primary/50"
                     )}
                 >
-                    <Upload className="mb-4 h-10 w-10 text-muted-foreground" />
+                    <Upload className="mb-3 h-8 w-8 text-muted-foreground" />
                     <p className="mb-2 text-sm font-medium">
                         Click to upload or drag and drop
                     </p>
@@ -125,10 +125,10 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
                         {files.map((file, index) => (
                             <div
                                 key={index}
-                                className="flex items-center justify-between rounded-lg border p-3"
+                                className="flex items-center justify-between rounded-lg border p-2"
                             >
-                                <div className="flex items-center gap-3">
-                                    <File className="h-5 w-5 text-muted-foreground" />
+                                <div className="flex items-center gap-2">
+                                    <File className="h-4 w-4 text-muted-foreground" />
                                     <div>
                                         <p className="text-sm font-medium">{file.name}</p>
                                         <p className="text-xs text-muted-foreground">

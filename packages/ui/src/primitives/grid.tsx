@@ -34,7 +34,7 @@ const gridVariants = cva("grid", {
     },
     defaultVariants: {
         columns: 1,
-        gap: "md",
+        gap: "sm",
         align: "stretch",
     },
 })

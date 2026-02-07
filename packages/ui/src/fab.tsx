@@ -14,9 +14,9 @@ const fabVariants = cva(
                     "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
             },
             size: {
-                default: "h-14 w-14",
-                sm: "h-10 w-10",
-                lg: "h-16 w-16",
+                default: "h-12 w-12",
+                sm: "h-9 w-9",
+                lg: "h-14 w-14",
                 extended: "h-14 gap-2 px-6",
             },
         },

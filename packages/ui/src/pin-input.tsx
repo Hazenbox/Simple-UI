@@ -110,7 +110,7 @@ export const PinInput = React.forwardRef<HTMLDivElement, PinInputProps>(
                         disabled={disabled}
                         placeholder={placeholder}
                         className={cn(
-                            "h-12 w-12 rounded-md border border-input bg-background text-center text-lg font-medium ring-offset-background transition-colors",
+                            "h-10 w-10 rounded-md border border-input bg-background text-center text-lg font-medium ring-offset-background transition-colors",
                             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
                             "disabled:cursor-not-allowed disabled:opacity-50",
                             pin && "border-primary"

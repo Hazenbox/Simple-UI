@@ -43,7 +43,7 @@ export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
                                 <div className="flex flex-col items-center">
                                     <div
                                         className={cn(
-                                            "flex h-10 w-10 items-center justify-center rounded-full border-2 transition-colors",
+                                            "flex h-8 w-8 items-center justify-center rounded-full border-2 transition-colors",
                                             isCompleted &&
                                             "border-primary bg-primary text-primary-foreground",
                                             isActive &&

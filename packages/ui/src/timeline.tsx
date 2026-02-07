@@ -15,7 +15,7 @@ export interface TimelineProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Timeline = React.forwardRef<HTMLDivElement, TimelineProps>(
     ({ className, items, ...props }, ref) => {
         return (
-            <div ref={ref} className={cn("space-y-8", className)} {...props}>
+            <div ref={ref} className={cn("space-y-6", className)} {...props}>
                 {items.map((item, index) => {
                     const isLast = index === items.length - 1;
 
@@ -27,14 +27,14 @@ export const Timeline = React.forwardRef<HTMLDivElement, TimelineProps>(
                             )}
 
                             {/* Icon/Dot */}
-                            <div className="relative flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border-2 border-primary bg-background">
+                            <div className="relative flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border-2 border-primary bg-background">
                                 {item.icon || (
                                     <div className="h-3 w-3 rounded-full bg-primary" />
                                 )}
                             </div>
 
                             {/* Content */}
-                            <div className="flex-1 space-y-1 pb-8">
+                            <div className="flex-1 space-y-1 pb-6">
                                 <div className="flex items-center justify-between">
                                     <p className="font-semibold leading-none">{item.title}</p>
                                     {item.time && (
