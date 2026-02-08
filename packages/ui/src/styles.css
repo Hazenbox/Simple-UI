@@ -203,6 +203,9 @@
   /* Accordion animations */
   --animate-accordion-down: accordion-down 0.3s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  /* Skeleton shimmer animation */
+  --animate-shimmer: shimmer 1.5s ease-in-out infinite;
 }
 
 @layer base {
@@ -336,6 +339,16 @@
   to {
     height: 0;
     opacity: 0;
+  }
+}
+
+/* Skeleton shimmer keyframes */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
   }
 }
 
