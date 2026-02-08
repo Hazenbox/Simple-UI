@@ -27,11 +27,11 @@ export const Stat = React.forwardRef<HTMLDivElement, StatProps>(
                 className={cn("rounded-lg border bg-card p-3 text-card-foreground", className)}
                 {...props}
             >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-2">
                     <p className="text-xs font-medium text-muted-foreground">{label}</p>
                     {icon && <div className="text-muted-foreground">{icon}</div>}
                 </div>
-                <div className="mt-1 flex items-baseline gap-1.5">
+                <div className="mt-1 flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
                     <p className="text-xl font-bold">
                         {prefix && <span className="text-sm font-semibold text-muted-foreground">{prefix}</span>}
                         {value}
