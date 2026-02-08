@@ -4,12 +4,10 @@ import * as React from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { DateRange } from "react-day-picker";
-import { motion } from "framer-motion";
 import { cn } from "./lib/utils";
 import { Button } from "./button";
 import { Calendar } from "./calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
-import { Stack } from "./primitives/stack";
 
 export interface DateRangePickerProps {
     value?: DateRange;
@@ -46,7 +44,6 @@ export const DateRangePicker = React.forwardRef<
                 return format(range.from, "LLL dd, y");
             }
             if (range.from && range.to) {
-                // Check if same month/year for compact formatting
                 const fromMonth = format(range.from, "LLL y");
                 const toMonth = format(range.to, "LLL y");
                 if (fromMonth === toMonth) {
@@ -58,33 +55,28 @@ export const DateRangePicker = React.forwardRef<
         };
 
         return (
-            <Stack ref={ref} gap="sm" className={className} role="group" aria-label="Date range picker">
+            <div ref={ref} className={cn("grid gap-1.5", className)} role="group" aria-label="Date range picker">
                 <Popover>
                     <PopoverTrigger asChild>
-                        <motion.div
-                            whileHover={{ scale: 1.01 }}
-                            whileTap={{ scale: 0.99 }}
-                            transition={{ duration: 0.1 }}
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            className={cn(
+                                "w-full justify-start text-left font-normal",
+                                !dateRange && "text-muted-foreground"
+                            )}
+                            disabled={disabled}
+                            aria-label="Select date range"
                         >
-                            <Button
-                                variant="outline"
-                                className={cn(
-                                    "w-full max-w-md justify-start text-left font-normal",
-                                    !dateRange && "text-muted-foreground"
-                                )}
-                                disabled={disabled}
-                                aria-label="Select date range"
-                            >
-                                <CalendarIcon className="mr-2 h-4 w-4" aria-hidden="true" />
-                                {dateRange?.from ? (
-                                    <span>{formatDateRange(dateRange)}</span>
-                                ) : (
-                                    <span>{placeholder}</span>
-                                )}
-                            </Button>
-                        </motion.div>
+                            <CalendarIcon className="mr-1.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                            {dateRange?.from ? (
+                                <span className="text-xs truncate">{formatDateRange(dateRange)}</span>
+                            ) : (
+                                <span className="text-xs">{placeholder}</span>
+                            )}
+                        </Button>
                     </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
+                    <PopoverContent className="w-auto p-0 shadow-sm" align="start">
                         <Calendar
                             initialFocus
                             mode="range"
@@ -95,7 +87,7 @@ export const DateRangePicker = React.forwardRef<
                         />
                     </PopoverContent>
                 </Popover>
-            </Stack>
+            </div>
         );
     }
 );

@@ -2,7 +2,8 @@
 
 import * as React from "react"
 import * as SelectPrimitive from "@radix-ui/react-select"
-import { Check, ChevronDown } from "lucide-react"
+import { Check, ChevronDown, Loader2 } from "lucide-react"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "./lib/utils"
 
@@ -12,21 +13,56 @@ const SelectGroup = SelectPrimitive.Group
 
 const SelectValue = SelectPrimitive.Value
 
+const selectTriggerVariants = cva(
+    "flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 ring-offset-background transition-colors placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+    {
+        variants: {
+            selectSize: {
+                sm: "h-7 text-xs px-2",
+                default: "h-8 text-sm",
+                lg: "h-9 px-3 text-sm",
+            },
+            variant: {
+                outline: "border border-input bg-background hover:border-muted-foreground/50",
+                ghost: "border-transparent bg-transparent hover:bg-accent",
+            },
+        },
+        defaultVariants: {
+            selectSize: "default",
+            variant: "outline",
+        },
+    }
+)
+
+export interface SelectTriggerProps
+    extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>,
+    VariantProps<typeof selectTriggerVariants> {
+    loading?: boolean
+    error?: boolean
+}
+
 const SelectTrigger = React.forwardRef<
     React.ElementRef<typeof SelectPrimitive.Trigger>,
-    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
+    SelectTriggerProps
+>(({ className, children, selectSize, variant, loading, error, ...props }, ref) => (
     <SelectPrimitive.Trigger
         ref={ref}
         className={cn(
-            "flex h-8 w-full items-center justify-between rounded-lg border border-input bg-background px-2.5 py-1.5 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+            selectTriggerVariants({ selectSize, variant }),
+            error && "border-destructive focus:ring-destructive",
             className
         )}
+        aria-invalid={error || undefined}
+        aria-busy={loading || undefined}
         {...props}
     >
         {children}
         <SelectPrimitive.Icon asChild>
-            <ChevronDown className="h-3.5 w-3.5 opacity-50" />
+            {loading ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin opacity-50" />
+            ) : (
+                <ChevronDown className="h-3.5 w-3.5 opacity-50" />
+            )}
         </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
 ))

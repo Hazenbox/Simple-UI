@@ -3,13 +3,11 @@
 import * as React from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon, Clock } from "lucide-react";
-import { motion } from "framer-motion";
 import { cn } from "./lib/utils";
 import { Button } from "./button";
 import { Calendar } from "./calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { Input } from "./input";
-import { Stack } from "./primitives/stack";
 
 export interface DateTimePickerProps {
     value?: Date;
@@ -57,7 +55,6 @@ export const DateTimePicker = React.forwardRef<
             setSelectedDate(newDate);
             onChange?.(newDate);
         } else {
-            // If no date selected, create a new date with today's date and selected time
             const [hours, minutes] = newTime.split(":");
             const today = new Date();
             today.setHours(parseInt(hours), parseInt(minutes));
@@ -67,12 +64,9 @@ export const DateTimePicker = React.forwardRef<
     };
 
     return (
-        <Stack
+        <div
             ref={ref}
-            direction="row"
-            gap="sm"
-            align="center"
-            className={className}
+            className={cn("flex items-center gap-2", className)}
             role="group"
             aria-label="Date and time picker"
         >
@@ -80,18 +74,23 @@ export const DateTimePicker = React.forwardRef<
                 <PopoverTrigger asChild>
                     <Button
                         variant="outline"
+                        size="sm"
                         className={cn(
-                            "w-full max-w-sm justify-start text-left font-normal",
+                            "justify-start text-left font-normal",
                             !selectedDate && "text-muted-foreground"
                         )}
                         disabled={disabled}
                         aria-label="Select date"
                     >
-                        <CalendarIcon className="mr-2 h-4 w-4" aria-hidden="true" />
-                        {selectedDate ? format(selectedDate, "PPP") : <span>{placeholder}</span>}
+                        <CalendarIcon className="mr-1.5 h-3.5 w-3.5" aria-hidden="true" />
+                        {selectedDate ? (
+                            <span className="text-xs">{format(selectedDate, "PPP")}</span>
+                        ) : (
+                            <span className="text-xs">{placeholder}</span>
+                        )}
                     </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
+                <PopoverContent className="w-auto p-0 shadow-sm" align="start">
                     <Calendar
                         mode="single"
                         selected={selectedDate}
@@ -100,26 +99,26 @@ export const DateTimePicker = React.forwardRef<
                     />
                 </PopoverContent>
             </Popover>
-            <motion.div
-                className="relative"
-                initial={false}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.2 }}
-            >
-                <Clock 
-                    className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none" 
+            <div className="relative">
+                <Clock
+                    className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground pointer-events-none"
                     aria-hidden="true"
                 />
                 <Input
                     type="time"
                     value={time}
                     onChange={handleTimeChange}
-                    className="w-36 pl-9"
+                    inputSize="sm"
+                    className="w-28 pl-8 pr-7 text-xs"
                     disabled={disabled}
                     aria-label="Select time"
                 />
-            </motion.div>
-        </Stack>
+                <Clock
+                    className="absolute right-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground pointer-events-none"
+                    aria-hidden="true"
+                />
+            </div>
+        </div>
     );
 });
 
