@@ -500,8 +500,8 @@ export const CheckboxSelection: Story = {
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            <TableHead className="w-10">
-                                <Checkbox size="sm" checked={selected.length === data.length} onCheckedChange={toggleAll} aria-label="Select all" />
+                            <TableHead className="w-10 cursor-pointer select-none" onClick={toggleAll}>
+                                <Checkbox size="sm" className="pointer-events-none" checked={selected.length === data.length} onCheckedChange={toggleAll} aria-label="Select all" />
                             </TableHead>
                             <TableHead>Customer</TableHead>
                             <TableHead>Amount</TableHead>
@@ -512,8 +512,8 @@ export const CheckboxSelection: Story = {
                     <TableBody>
                         {data.map((r) => (
                             <TableRow key={r.id} data-state={selected.includes(r.id) ? "selected" : undefined}>
-                                <TableCell>
-                                    <Checkbox size="sm" checked={selected.includes(r.id)} onCheckedChange={() => toggle(r.id)} aria-label={`Select ${r.name}`} />
+                                <TableCell className="cursor-pointer select-none" onClick={() => toggle(r.id)}>
+                                    <Checkbox size="sm" className="pointer-events-none" checked={selected.includes(r.id)} aria-label={`Select ${r.name}`} />
                                 </TableCell>
                                 <TableCell className="font-medium">{r.name}</TableCell>
                                 <TableCell>{r.amount}</TableCell>
