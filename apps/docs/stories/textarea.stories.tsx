@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Textarea } from "@acme/ui/textarea";
 import { Label } from "@acme/ui/label";
 import { Stack } from "@acme/ui/primitives/stack";
-import { FormField } from "@acme/ui/form-field";
+import { FieldWrapper } from "@acme/ui/form-field";
 
 const meta = {
     title: "UI/Form/Textarea",
@@ -34,13 +34,13 @@ export const Default: Story = {
 
 export const WithLabel: Story = {
     render: () => (
-        <FormField label="Bio" className="w-80">
+        <FieldWrapper label="Bio" className="w-80">
             <Textarea
                 id="bio"
                 placeholder="Tell us about yourself"
                 rows={4}
             />
-        </FormField>
+        </FieldWrapper>
     ),
 };
 
@@ -87,16 +87,16 @@ export const WithError: Story = {
 
 export const WithFormField: Story = {
     render: () => (
-        <FormField label="Bio" helperText="Max 500 characters" className="w-80">
+        <FieldWrapper label="Bio" helperText="Max 500 characters" className="w-80">
             <Textarea placeholder="Tell us about yourself" rows={4} />
-        </FormField>
+        </FieldWrapper>
     ),
 };
 
 export const WithErrorField: Story = {
     render: () => (
-        <FormField label="Description" error="Required" className="w-80">
+        <FieldWrapper label="Description" error="Required" className="w-80">
             <Textarea placeholder="Enter description" rows={4} />
-        </FormField>
+        </FieldWrapper>
     ),
 };

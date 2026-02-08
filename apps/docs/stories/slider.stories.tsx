@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Slider } from "@acme/ui/slider";
 import { Label } from "@acme/ui/label";
 import { Stack } from "@acme/ui/primitives/stack";
-import { FormField } from "@acme/ui/form-field";
+import { FieldWrapper } from "@acme/ui/form-field";
 import { Button } from "@acme/ui/button";
 import { Minus, Plus, Volume2 } from "lucide-react";
 
@@ -135,15 +135,15 @@ export const WithStepper: Story = {
 export const StackedGroup: Story = {
     render: () => (
         <Stack gap="md" className="w-80">
-            <FormField label="Volume">
+            <FieldWrapper label="Volume">
                 <Slider defaultValue={[75]} max={100} step={1} />
-            </FormField>
-            <FormField label="Bass">
+            </FieldWrapper>
+            <FieldWrapper label="Bass">
                 <Slider defaultValue={[60]} max={100} step={1} />
-            </FormField>
-            <FormField label="Treble">
+            </FieldWrapper>
+            <FieldWrapper label="Treble">
                 <Slider defaultValue={[45]} max={100} step={1} />
-            </FormField>
+            </FieldWrapper>
         </Stack>
     ),
 };

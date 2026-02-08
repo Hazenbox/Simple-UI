@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { InputGroup, InputAddon, InputGroupInput } from "@acme/ui/input-group";
-import { FormField } from "@acme/ui/form-field";
+import { FieldWrapper } from "@acme/ui/form-field";
 import { Search, DollarSign, AtSign, Lock } from "lucide-react";
 
 const meta = {
@@ -18,14 +18,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     render: () => (
         <div className="w-80">
-            <FormField label="Username">
+            <FieldWrapper label="Username">
                 <InputGroup>
                     <InputAddon position="left">
                         <AtSign className="h-4 w-4" />
                     </InputAddon>
                     <InputGroupInput placeholder="username" />
                 </InputGroup>
-            </FormField>
+            </FieldWrapper>
         </div>
     ),
 };
@@ -33,14 +33,14 @@ export const Default: Story = {
 export const WithRightAddon: Story = {
     render: () => (
         <div className="w-80">
-            <FormField label="Price">
+            <FieldWrapper label="Price">
                 <InputGroup>
                     <InputGroupInput placeholder="0.00" />
                     <InputAddon position="right">
                         <DollarSign className="h-4 w-4" />
                     </InputAddon>
                 </InputGroup>
-            </FormField>
+            </FieldWrapper>
         </div>
     ),
 };
@@ -48,13 +48,13 @@ export const WithRightAddon: Story = {
 export const WithBothAddons: Story = {
     render: () => (
         <div className="w-80">
-            <FormField label="Website">
+            <FieldWrapper label="Website">
                 <InputGroup>
                     <InputAddon position="left">https://</InputAddon>
                     <InputGroupInput placeholder="example.com" />
                     <InputAddon position="right">.com</InputAddon>
                 </InputGroup>
-            </FormField>
+            </FieldWrapper>
         </div>
     ),
 };
@@ -62,14 +62,14 @@ export const WithBothAddons: Story = {
 export const SearchInput: Story = {
     render: () => (
         <div className="w-80">
-            <FormField label="Search">
+            <FieldWrapper label="Search">
                 <InputGroup>
                     <InputAddon position="left">
                         <Search className="h-4 w-4" />
                     </InputAddon>
                     <InputGroupInput placeholder="Search..." />
                 </InputGroup>
-            </FormField>
+            </FieldWrapper>
         </div>
     ),
 };
@@ -77,14 +77,14 @@ export const SearchInput: Story = {
 export const SmallSize: Story = {
     render: () => (
         <div className="w-80">
-            <FormField label="Password (Small)">
+            <FieldWrapper label="Password (Small)">
                 <InputGroup size="sm">
                     <InputAddon position="left">
                         <Lock className="h-4 w-4" />
                     </InputAddon>
                     <InputGroupInput placeholder="Enter password" />
                 </InputGroup>
-            </FormField>
+            </FieldWrapper>
         </div>
     ),
 };
@@ -92,14 +92,14 @@ export const SmallSize: Story = {
 export const LargeSize: Story = {
     render: () => (
         <div className="w-80">
-            <FormField label="Password (Large)">
+            <FieldWrapper label="Password (Large)">
                 <InputGroup size="lg">
                     <InputAddon position="left">
                         <Lock className="h-4 w-4" />
                     </InputAddon>
                     <InputGroupInput placeholder="Enter password" />
                 </InputGroup>
-            </FormField>
+            </FieldWrapper>
         </div>
     ),
 };

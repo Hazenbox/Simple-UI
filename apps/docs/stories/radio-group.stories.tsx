@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { RadioGroup, RadioGroupItem, RadioGroupCard } from "@acme/ui/radio-group";
 import { Label } from "@acme/ui/label";
 import { Stack } from "@acme/ui/primitives/stack";
-import { FormField } from "@acme/ui/form-field";
+import { FieldWrapper } from "@acme/ui/form-field";
 
 const meta = {
     title: "UI/Form/RadioGroup",
@@ -123,7 +123,7 @@ export const NotificationSettings: Story = {
 
 export const ErrorState: Story = {
     render: () => (
-        <FormField label="Select a plan" error="Please select a valid plan.">
+        <FieldWrapper label="Select a plan" error="Please select a valid plan.">
             <RadioGroup defaultValue="option-one">
                 <div className="flex items-center space-x-2">
                     <RadioGroupItem value="option-one" id="err-1" error />
@@ -144,7 +144,7 @@ export const ErrorState: Story = {
                     </Label>
                 </div>
             </RadioGroup>
-        </FormField>
+        </FieldWrapper>
     ),
 };
 

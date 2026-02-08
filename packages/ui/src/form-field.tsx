@@ -4,7 +4,7 @@ import * as React from "react"
 import { cn } from "./lib/utils"
 import { Label } from "./label"
 
-export interface FormFieldProps {
+export interface FieldWrapperProps {
     label?: string
     htmlFor?: string
     error?: string
@@ -16,7 +16,7 @@ export interface FormFieldProps {
     className?: string
 }
 
-const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>(
+const FieldWrapper = React.forwardRef<HTMLDivElement, FieldWrapperProps>(
     (
         {
             label,
@@ -102,6 +102,6 @@ const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>(
     }
 )
 
-FormField.displayName = "FormField"
+FieldWrapper.displayName = "FieldWrapper"
 
-export { FormField }
+export { FieldWrapper }

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Switch } from "@acme/ui/switch";
 import { Label } from "@acme/ui/label";
 import { Stack } from "@acme/ui/primitives/stack";
-import { FormField } from "@acme/ui/form-field";
+import { FieldWrapper } from "@acme/ui/form-field";
 
 const meta = {
     title: "UI/Form/Switch",
@@ -171,24 +171,24 @@ export const StackedGroup: Story = {
         <Stack gap="md" className="w-80">
             <div className="rounded-xl border p-3">
                 <Stack gap="md">
-                    <FormField
+                    <FieldWrapper
                         label="Push notifications"
                         helperText="Receive push notifications on your device."
                     >
                         <Switch id="push-notif" defaultChecked />
-                    </FormField>
-                    <FormField
+                    </FieldWrapper>
+                    <FieldWrapper
                         label="Email digest"
                         helperText="Get a weekly summary of activity."
                     >
                         <Switch id="email-digest" />
-                    </FormField>
-                    <FormField
+                    </FieldWrapper>
+                    <FieldWrapper
                         label="SMS alerts"
                         helperText="Receive critical alerts via text message."
                     >
                         <Switch id="sms-alerts" />
-                    </FormField>
+                    </FieldWrapper>
                 </Stack>
             </div>
         </Stack>

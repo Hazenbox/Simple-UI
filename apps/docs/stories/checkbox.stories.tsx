@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Checkbox, CheckboxCard } from "@acme/ui/checkbox";
 import { Label } from "@acme/ui/label";
 import { Stack } from "@acme/ui/primitives/stack";
-import { FormField } from "@acme/ui/form-field";
+import { FieldWrapper } from "@acme/ui/form-field";
 
 const meta = {
     title: "UI/Form/Checkbox",

@@ -6,7 +6,7 @@ import {
     InputWithSlot,
     InputWithValidation,
 } from "@acme/ui/input-enhanced";
-import { FormField } from "@acme/ui/form-field";
+import { FieldWrapper } from "@acme/ui/form-field";
 import { Label } from "@acme/ui/label";
 import { Switch } from "@acme/ui/switch";
 import { Stack } from "@acme/ui/primitives/stack";
@@ -165,9 +165,9 @@ export const ValidationSuccess: Story = {
 export const WithFormField: Story = {
     render: () => (
         <div className="w-80">
-            <FormField label="Username" required error="Username is required">
+            <FieldWrapper label="Username" required error="Username is required">
                 <Input placeholder="Enter username" />
-            </FormField>
+            </FieldWrapper>
         </div>
     ),
 };

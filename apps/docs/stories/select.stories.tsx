@@ -10,7 +10,7 @@ import {
 } from "@acme/ui/select";
 import { Label } from "@acme/ui/label";
 import { Stack } from "@acme/ui/primitives/stack";
-import { FormField } from "@acme/ui/form-field";
+import { FieldWrapper } from "@acme/ui/form-field";
 
 const meta = {
     title: "UI/Form/Select",
@@ -174,7 +174,7 @@ export const GhostVariant: Story = {
 
 export const ErrorState: Story = {
     render: () => (
-        <FormField label="Framework" error="Please select a framework">
+        <FieldWrapper label="Framework" error="Please select a framework">
             <Select>
                 <SelectTrigger error={true}>
                     <SelectValue placeholder="Select a framework" />
@@ -186,7 +186,7 @@ export const ErrorState: Story = {
                     <SelectItem value="svelte">Svelte</SelectItem>
                 </SelectContent>
             </Select>
-        </FormField>
+        </FieldWrapper>
     ),
 };
 

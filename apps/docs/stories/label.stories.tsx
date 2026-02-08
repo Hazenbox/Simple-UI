@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Label } from "@acme/ui/label";
 import { Input } from "@acme/ui/input";
 import { Stack } from "@acme/ui/primitives/stack";
-import { FormField } from "@acme/ui/form-field";
+import { FieldWrapper } from "@acme/ui/form-field";
 
 const meta = {
     title: "UI/Form/Label",
@@ -49,8 +49,8 @@ export const Disabled: Story = {
 
 export const WithFormField: Story = {
     render: () => (
-        <FormField label="Email" required helperText="We'll never share your email">
+        <FieldWrapper label="Email" required helperText="We'll never share your email">
             <Input placeholder="Enter your email" />
-        </FormField>
+        </FieldWrapper>
     ),
 };
