@@ -1,12 +1,12 @@
 import * as React from "react";
-import { Minus, Plus } from "lucide-react";
+import { ChevronDown, ChevronUp, Minus, Plus } from "lucide-react";
 
 import { cn } from "./lib/utils";
 import { Button } from "./button";
 import { Input } from "./input";
 
 export interface NumberInputProps
-    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type" | "onChange"> {
+    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type" | "onChange" | "size"> {
     value?: number;
     onChange?: (value: number) => void;
     min?: number;
@@ -14,6 +14,8 @@ export interface NumberInputProps
     step?: number;
     precision?: number;
     showStepper?: boolean;
+    /** vertical = stacked up/down arrows (default), horizontal = +/- buttons on sides */
+    orientation?: "vertical" | "horizontal";
 }
 
 export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
@@ -26,6 +28,7 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
             step = 1,
             precision = 0,
             showStepper = true,
+            orientation = "vertical",
             className,
             disabled,
             ...props
@@ -69,6 +72,49 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
             }
         };
 
+        if (orientation === "horizontal" && showStepper) {
+            return (
+                <div className={cn("flex items-center gap-1", className)}>
+                    <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        className="h-8 w-8 shrink-0 rounded-lg p-0"
+                        onClick={handleDecrement}
+                        disabled={disabled || internalValue <= min}
+                        tabIndex={-1}
+                        aria-label="Decrease"
+                    >
+                        <Minus className="h-3 w-3" />
+                    </Button>
+                    <Input
+                        ref={ref}
+                        type="number"
+                        value={internalValue}
+                        onChange={handleInputChange}
+                        min={min}
+                        max={max}
+                        step={step}
+                        disabled={disabled}
+                        className="text-center text-xs"
+                        {...props}
+                    />
+                    <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        className="h-8 w-8 shrink-0 rounded-lg p-0"
+                        onClick={handleIncrement}
+                        disabled={disabled || internalValue >= max}
+                        tabIndex={-1}
+                        aria-label="Increase"
+                    >
+                        <Plus className="h-3 w-3" />
+                    </Button>
+                </div>
+            );
+        }
+
         return (
             <div className={cn("relative flex items-center", className)}>
                 <Input
@@ -80,33 +126,31 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
                     max={max}
                     step={step}
                     disabled={disabled}
-                    className={cn(showStepper && "pr-16")}
+                    className={cn("text-xs", showStepper && "pr-8")}
                     {...props}
                 />
                 {showStepper && (
                     <div className="absolute right-0 flex h-full flex-col border-l">
-                        <Button
+                        <button
                             type="button"
-                            variant="ghost"
-                            size="sm"
-                            className="h-1/2 rounded-none rounded-tr-lg border-b px-2"
+                            className="flex h-1/2 items-center justify-center rounded-tr-lg border-b px-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground disabled:pointer-events-none disabled:opacity-50"
                             onClick={handleIncrement}
                             disabled={disabled || internalValue >= max}
                             tabIndex={-1}
+                            aria-label="Increase"
                         >
-                            <Plus className="h-3 w-3" />
-                        </Button>
-                        <Button
+                            <ChevronUp className="h-3 w-3" />
+                        </button>
+                        <button
                             type="button"
-                            variant="ghost"
-                            size="sm"
-                            className="h-1/2 rounded-none rounded-br-lg px-2"
+                            className="flex h-1/2 items-center justify-center rounded-br-lg px-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground disabled:pointer-events-none disabled:opacity-50"
                             onClick={handleDecrement}
                             disabled={disabled || internalValue <= min}
                             tabIndex={-1}
+                            aria-label="Decrease"
                         >
-                            <Minus className="h-3 w-3" />
-                        </Button>
+                            <ChevronDown className="h-3 w-3" />
+                        </button>
                     </div>
                 )}
             </div>
