@@ -2,6 +2,7 @@ import * as React from "react"
 import * as MenubarPrimitive from "@radix-ui/react-menubar"
 import { Check, ChevronRight, Circle } from "lucide-react"
 import { cn } from "./lib/utils"
+import { Kbd } from "./kbd"
 
 const MenubarMenu: typeof MenubarPrimitive.Menu = MenubarPrimitive.Menu
 const MenubarGroup: typeof MenubarPrimitive.Group = MenubarPrimitive.Group
@@ -195,16 +196,16 @@ MenubarSeparator.displayName = MenubarPrimitive.Separator.displayName
 
 const MenubarShortcut = ({
     className,
+    children,
     ...props
-}: React.HTMLAttributes<HTMLSpanElement>) => {
+}: React.HTMLAttributes<HTMLElement>) => {
     return (
-        <span
-            className={cn(
-                "ml-auto font-mono text-xs tracking-widest text-muted-foreground",
-                className
-            )}
+        <Kbd
+            className={cn("ml-auto", className)}
             {...props}
-        />
+        >
+            {children}
+        </Kbd>
     )
 }
 MenubarShortcut.displayName = "MenubarShortcut"

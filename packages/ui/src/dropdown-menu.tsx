@@ -2,6 +2,7 @@ import * as React from "react"
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
 import { Check, ChevronRight, Circle } from "lucide-react"
 import { cn } from "./lib/utils"
+import { Kbd } from "./kbd"
 
 const DropdownMenu = DropdownMenuPrimitive.Root
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
@@ -177,16 +178,16 @@ DropdownMenuSeparator.displayName =
 
 const DropdownMenuShortcut = ({
     className,
+    children,
     ...props
-}: React.HTMLAttributes<HTMLSpanElement>) => {
+}: React.HTMLAttributes<HTMLElement>) => {
     return (
-        <span
-            className={cn(
-                "ml-auto font-mono text-xs tracking-widest text-muted-foreground",
-                className
-            )}
+        <Kbd
+            className={cn("ml-auto", className)}
             {...props}
-        />
+        >
+            {children}
+        </Kbd>
     )
 }
 DropdownMenuShortcut.displayName = "DropdownMenuShortcut"

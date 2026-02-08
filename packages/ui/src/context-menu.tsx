@@ -2,6 +2,7 @@ import * as React from "react"
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu"
 import { Check, ChevronRight, Circle } from "lucide-react"
 import { cn } from "./lib/utils"
+import { Kbd } from "./kbd"
 
 const ContextMenu = ContextMenuPrimitive.Root
 const ContextMenuTrigger = ContextMenuPrimitive.Trigger
@@ -169,16 +170,16 @@ ContextMenuSeparator.displayName =
 
 const ContextMenuShortcut = ({
     className,
+    children,
     ...props
-}: React.HTMLAttributes<HTMLSpanElement>) => {
+}: React.HTMLAttributes<HTMLElement>) => {
     return (
-        <span
-            className={cn(
-                "ml-auto font-mono text-xs tracking-widest text-muted-foreground",
-                className
-            )}
+        <Kbd
+            className={cn("ml-auto", className)}
             {...props}
-        />
+        >
+            {children}
+        </Kbd>
     )
 }
 ContextMenuShortcut.displayName = "ContextMenuShortcut"
