@@ -10,7 +10,7 @@ import { cn } from "./lib/utils"
 /* ------------------------------------------------------------------ */
 
 const avatarVariants = cva(
-    "relative flex shrink-0 overflow-hidden rounded-full",
+    "relative flex shrink-0 rounded-full",
     {
         variants: {
             size: {
@@ -129,7 +129,7 @@ const AvatarImage = React.forwardRef<
 >(({ className, ...props }, ref) => (
     <AvatarPrimitive.Image
         ref={ref}
-        className={cn("aspect-square h-full w-full", className)}
+        className={cn("aspect-square h-full w-full overflow-hidden rounded-full", className)}
         {...props}
     />
 ))
@@ -146,7 +146,7 @@ const AvatarFallback = React.forwardRef<
     <AvatarPrimitive.Fallback
         ref={ref}
         className={cn(
-            "flex h-full w-full items-center justify-center rounded-full bg-muted font-medium",
+            "flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-muted font-medium",
             className
         )}
         {...props}
