@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Toggle } from "@acme/ui/toggle";
+import { ToggleGroup, ToggleGroupItem } from "@acme/ui/toggle-group";
 import { Bold, Italic, Underline } from "lucide-react";
 
 const meta = {
@@ -88,6 +89,76 @@ export const AllVariants: Story = {
             <Toggle variant="outline" aria-label="Outline variant">
                 <Bold className="h-4 w-4" />
             </Toggle>
+        </div>
+    ),
+};
+
+export const SquareShape: Story = {
+    render: () => (
+        <ToggleGroup type="multiple" shape="square">
+            <ToggleGroupItem value="bold" aria-label="Toggle bold">
+                <Bold className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="italic" aria-label="Toggle italic">
+                <Italic className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="underline" aria-label="Toggle underline">
+                <Underline className="h-4 w-4" />
+            </ToggleGroupItem>
+        </ToggleGroup>
+    ),
+};
+
+export const CircleShape: Story = {
+    render: () => (
+        <ToggleGroup type="multiple" shape="circle">
+            <ToggleGroupItem value="bold" aria-label="Toggle bold">
+                <Bold className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="italic" aria-label="Toggle italic">
+                <Italic className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="underline" aria-label="Toggle underline">
+                <Underline className="h-4 w-4" />
+            </ToggleGroupItem>
+        </ToggleGroup>
+    ),
+};
+
+export const BoldEmphasis: Story = {
+    render: () => (
+        <Toggle variant="bold" aria-label="Toggle bold">
+            <Bold className="h-4 w-4" />
+        </Toggle>
+    ),
+};
+
+export const SubtleEmphasis: Story = {
+    render: () => (
+        <Toggle variant="subtle" aria-label="Toggle italic">
+            <Italic className="h-4 w-4" />
+        </Toggle>
+    ),
+};
+
+export const AllShapes: Story = {
+    render: () => (
+        <div className="flex items-center gap-4">
+            <ToggleGroup type="multiple" shape="default">
+                <ToggleGroupItem value="bold" aria-label="Toggle bold">
+                    <Bold className="h-4 w-4" />
+                </ToggleGroupItem>
+            </ToggleGroup>
+            <ToggleGroup type="multiple" shape="square">
+                <ToggleGroupItem value="bold" aria-label="Toggle bold">
+                    <Bold className="h-4 w-4" />
+                </ToggleGroupItem>
+            </ToggleGroup>
+            <ToggleGroup type="multiple" shape="circle">
+                <ToggleGroupItem value="bold" aria-label="Toggle bold">
+                    <Bold className="h-4 w-4" />
+                </ToggleGroupItem>
+            </ToggleGroup>
         </div>
     ),
 };

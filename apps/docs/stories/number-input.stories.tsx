@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { NumberInput } from "@acme/ui/number-input";
+import { FormField } from "@acme/ui/form-field";
 import { useState } from "react";
 
 const meta = {
@@ -117,5 +118,34 @@ export const QuantitySelector: Story = {
                 </div>
             </div>
         );
+    },
+};
+
+export const HorizontalControls: Story = {
+    render: () => {
+        const [value, setValue] = useState(1);
+        return (
+            <FormField label="Quantity">
+                <NumberInput value={value} onChange={setValue} orientation="horizontal" />
+            </FormField>
+        );
+    },
+};
+
+export const WithFormField: Story = {
+    render: () => {
+        const [value, setValue] = useState(0);
+        return (
+            <FormField label="Quantity" helperText="Max 100">
+                <NumberInput value={value} onChange={setValue} min={0} max={100} />
+            </FormField>
+        );
+    },
+};
+
+export const CompactSize: Story = {
+    render: () => {
+        const [value, setValue] = useState(0);
+        return <NumberInput value={value} onChange={setValue} className="w-24" />;
     },
 };

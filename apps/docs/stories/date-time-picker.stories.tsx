@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import * as React from "react";
 import { DateTimePicker } from "@acme/ui/date-time-picker";
+import { FormField } from "@acme/ui/form-field";
 import { Stack } from "@acme/ui/primitives/stack";
 
 const meta = {
@@ -53,4 +54,12 @@ export const Controlled: Story = {
             </Stack>
         );
     },
+};
+
+export const WithFormField: Story = {
+    render: () => (
+        <FormField label="Appointment">
+            <DateTimePicker placeholder="Pick a date and time" />
+        </FormField>
+    ),
 };

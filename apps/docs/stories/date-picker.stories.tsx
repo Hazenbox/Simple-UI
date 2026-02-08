@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { DatePicker } from "@acme/ui/date-picker";
-import { Label } from "@acme/ui/label";
-import { Stack } from "@acme/ui/primitives/stack";
+import { FormField } from "@acme/ui/form-field";
 
 const meta = {
     title: "UI/Specialized/DatePicker",
@@ -21,9 +20,8 @@ export const Default: Story = {
 
 export const WithLabel: Story = {
     render: () => (
-        <Stack gap="sm" className="w-80">
-            <Label>Select Date</Label>
+        <FormField label="Select Date">
             <DatePicker />
-        </Stack>
+        </FormField>
     ),
 };

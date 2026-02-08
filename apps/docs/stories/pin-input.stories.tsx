@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { PinInput } from "@acme/ui/pin-input";
+import { FormField } from "@acme/ui/form-field";
 import { useState } from "react";
 
 const meta = {
@@ -25,15 +26,9 @@ export const WithLabel: Story = {
     render: () => {
         const [value, setValue] = useState("");
         return (
-            <div className="space-y-4">
-                <div className="text-center">
-                    <h3 className="text-lg font-semibold">Enter Verification Code</h3>
-                    <p className="text-sm text-muted-foreground">
-                        We sent a code to your email
-                    </p>
-                </div>
+            <FormField label="Enter Verification Code" helperText="We sent a code to your email">
                 <PinInput value={value} onChange={setValue} />
-            </div>
+            </FormField>
         );
     },
 };

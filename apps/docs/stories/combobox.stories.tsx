@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Combobox } from "@acme/ui/combobox";
+import { FormField } from "@acme/ui/form-field";
 import { useState } from "react";
 
 const meta = {
@@ -40,15 +41,14 @@ export const WithLabel: Story = {
     render: () => {
         const [value, setValue] = useState("");
         return (
-            <div className="space-y-2">
-                <label className="text-sm font-medium">Framework</label>
+            <FormField label="Framework">
                 <Combobox
                     options={frameworks}
                     value={value}
                     onValueChange={setValue}
                     placeholder="Select framework..."
                 />
-            </div>
+            </FormField>
         );
     },
 };

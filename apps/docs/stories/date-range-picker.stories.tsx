@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { DateRangePicker } from "@acme/ui/date-range-picker";
+import { FormField } from "@acme/ui/form-field";
 import { Stack } from "@acme/ui/primitives/stack";
 import * as React from "react";
 import { DateRange } from "react-day-picker";
@@ -61,4 +62,12 @@ export const Controlled: Story = {
             </Stack>
         );
     },
+};
+
+export const WithFormField: Story = {
+    render: () => (
+        <FormField label="Date Range">
+            <DateRangePicker placeholder="Pick a date range" />
+        </FormField>
+    ),
 };

@@ -109,3 +109,51 @@ export const Disabled: Story = {
         </ToggleGroup>
     ),
 };
+
+export const SquareShape: Story = {
+    render: () => (
+        <ToggleGroup type="multiple" shape="square">
+            <ToggleGroupItem value="bold" aria-label="Toggle bold">
+                <Bold className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="italic" aria-label="Toggle italic">
+                <Italic className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="underline" aria-label="Toggle underline">
+                <Underline className="h-4 w-4" />
+            </ToggleGroupItem>
+        </ToggleGroup>
+    ),
+};
+
+export const CircleShape: Story = {
+    render: () => (
+        <ToggleGroup type="single" shape="circle">
+            <ToggleGroupItem value="left" aria-label="Align left">
+                <AlignLeft className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="center" aria-label="Align center">
+                <AlignCenter className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="right" aria-label="Align right">
+                <AlignRight className="h-4 w-4" />
+            </ToggleGroupItem>
+        </ToggleGroup>
+    ),
+};
+
+export const BoldVariant: Story = {
+    render: () => (
+        <ToggleGroup type="multiple" variant="bold">
+            <ToggleGroupItem value="bold" aria-label="Toggle bold">
+                <Bold className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="italic" aria-label="Toggle italic">
+                <Italic className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="underline" aria-label="Toggle underline">
+                <Underline className="h-4 w-4" />
+            </ToggleGroupItem>
+        </ToggleGroup>
+    ),
+};

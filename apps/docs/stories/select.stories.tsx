@@ -10,6 +10,7 @@ import {
 } from "@acme/ui/select";
 import { Label } from "@acme/ui/label";
 import { Stack } from "@acme/ui/primitives/stack";
+import { FormField } from "@acme/ui/form-field";
 
 const meta = {
     title: "UI/Form/Select",
@@ -108,6 +109,96 @@ export const WithDisabledItems: Story = {
                 <SelectItem value="enterprise" disabled>
                     Enterprise (Coming Soon)
                 </SelectItem>
+            </SelectContent>
+        </Select>
+    ),
+};
+
+export const Sizes: Story = {
+    render: () => (
+        <Stack gap="md" className="w-80">
+            <Stack gap="sm">
+                <Label>Small</Label>
+                <Select>
+                    <SelectTrigger selectSize="sm">
+                        <SelectValue placeholder="Small select" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="a">Option A</SelectItem>
+                        <SelectItem value="b">Option B</SelectItem>
+                    </SelectContent>
+                </Select>
+            </Stack>
+            <Stack gap="sm">
+                <Label>Default</Label>
+                <Select>
+                    <SelectTrigger selectSize="default">
+                        <SelectValue placeholder="Default select" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="a">Option A</SelectItem>
+                        <SelectItem value="b">Option B</SelectItem>
+                    </SelectContent>
+                </Select>
+            </Stack>
+            <Stack gap="sm">
+                <Label>Large</Label>
+                <Select>
+                    <SelectTrigger selectSize="lg">
+                        <SelectValue placeholder="Large select" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="a">Option A</SelectItem>
+                        <SelectItem value="b">Option B</SelectItem>
+                    </SelectContent>
+                </Select>
+            </Stack>
+        </Stack>
+    ),
+};
+
+export const GhostVariant: Story = {
+    render: () => (
+        <Select>
+            <SelectTrigger variant="ghost" className="w-[180px]">
+                <SelectValue placeholder="Ghost select" />
+            </SelectTrigger>
+            <SelectContent>
+                <SelectItem value="apple">Apple</SelectItem>
+                <SelectItem value="banana">Banana</SelectItem>
+                <SelectItem value="orange">Orange</SelectItem>
+            </SelectContent>
+        </Select>
+    ),
+};
+
+export const ErrorState: Story = {
+    render: () => (
+        <FormField label="Framework" error="Please select a framework">
+            <Select>
+                <SelectTrigger error={true}>
+                    <SelectValue placeholder="Select a framework" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="next">Next.js</SelectItem>
+                    <SelectItem value="react">React</SelectItem>
+                    <SelectItem value="vue">Vue</SelectItem>
+                    <SelectItem value="svelte">Svelte</SelectItem>
+                </SelectContent>
+            </Select>
+        </FormField>
+    ),
+};
+
+export const LoadingState: Story = {
+    render: () => (
+        <Select>
+            <SelectTrigger loading={true} className="w-[180px]">
+                <SelectValue placeholder="Loading..." />
+            </SelectTrigger>
+            <SelectContent>
+                <SelectItem value="a">Option A</SelectItem>
+                <SelectItem value="b">Option B</SelectItem>
             </SelectContent>
         </Select>
     ),

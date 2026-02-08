@@ -2,6 +2,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Slider } from "@acme/ui/slider";
 import { Label } from "@acme/ui/label";
 import { Stack } from "@acme/ui/primitives/stack";
+import { FormField } from "@acme/ui/form-field";
+import { Button } from "@acme/ui/button";
+import { Minus, Plus, Volume2 } from "lucide-react";
 
 const meta = {
     title: "UI/Form/Slider",
@@ -83,6 +86,64 @@ export const VolumeControl: Story = {
                 </div>
                 <Slider id="brightness" defaultValue={[50]} max={100} step={1} />
             </div>
+        </Stack>
+    ),
+};
+
+export const AllSizes: Story = {
+    render: () => (
+        <Stack gap="md" className="w-80">
+            <Stack gap="sm">
+                <Label>Small</Label>
+                <Slider defaultValue={[50]} max={100} step={1} size="sm" />
+            </Stack>
+            <Stack gap="sm">
+                <Label>Default</Label>
+                <Slider defaultValue={[50]} max={100} step={1} size="default" />
+            </Stack>
+            <Stack gap="sm">
+                <Label>Large</Label>
+                <Slider defaultValue={[50]} max={100} step={1} size="lg" />
+            </Stack>
+        </Stack>
+    ),
+};
+
+export const WithIcon: Story = {
+    render: () => (
+        <div className="flex w-80 items-center gap-3">
+            <Volume2 className="h-4 w-4 shrink-0 text-muted-foreground" />
+            <Slider defaultValue={[65]} max={100} step={1} />
+        </div>
+    ),
+};
+
+export const WithStepper: Story = {
+    render: () => (
+        <div className="flex w-80 items-center gap-2">
+            <Button variant="outline" size="icon" aria-label="Decrease">
+                <Minus className="h-4 w-4" />
+            </Button>
+            <Slider defaultValue={[50]} max={100} step={1} />
+            <Button variant="outline" size="icon" aria-label="Increase">
+                <Plus className="h-4 w-4" />
+            </Button>
+        </div>
+    ),
+};
+
+export const StackedGroup: Story = {
+    render: () => (
+        <Stack gap="md" className="w-80">
+            <FormField label="Volume">
+                <Slider defaultValue={[75]} max={100} step={1} />
+            </FormField>
+            <FormField label="Bass">
+                <Slider defaultValue={[60]} max={100} step={1} />
+            </FormField>
+            <FormField label="Treble">
+                <Slider defaultValue={[45]} max={100} step={1} />
+            </FormField>
         </Stack>
     ),
 };

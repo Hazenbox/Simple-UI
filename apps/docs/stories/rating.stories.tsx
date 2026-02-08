@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Rating } from "@acme/ui/rating";
+import { FormField } from "@acme/ui/form-field";
 import { useState } from "react";
 
 const meta = {
@@ -25,11 +26,10 @@ export const WithLabel: Story = {
     render: () => {
         const [value, setValue] = useState(3);
         return (
-            <div className="space-y-2">
-                <label className="text-sm font-medium">Rate your experience</label>
+            <FormField label="Rate your experience">
                 <Rating value={value} onChange={setValue} />
                 <p className="text-sm text-muted-foreground">{value} out of 5 stars</p>
-            </div>
+            </FormField>
         );
     },
 };
@@ -151,6 +151,17 @@ export const ProductReview: Story = {
                     </p>
                 )}
             </div>
+        );
+    },
+};
+
+export const WithFormField: Story = {
+    render: () => {
+        const [value, setValue] = useState(0);
+        return (
+            <FormField label="Rate your experience">
+                <Rating value={value} onChange={setValue} />
+            </FormField>
         );
     },
 };

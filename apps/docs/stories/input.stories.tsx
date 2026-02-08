@@ -1,7 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Input } from "@acme/ui/input";
+import {
+    InputWithIcon,
+    FloatingLabelInput,
+    InputWithSlot,
+    InputWithValidation,
+} from "@acme/ui/input-enhanced";
+import { FormField } from "@acme/ui/form-field";
 import { Label } from "@acme/ui/label";
+import { Switch } from "@acme/ui/switch";
 import { Stack } from "@acme/ui/primitives/stack";
+import { Search, Mail } from "lucide-react";
 
 const meta = {
     title: "UI/Form/Input",
@@ -88,4 +97,77 @@ export const Number: Story = {
         min: 0,
         max: 100,
     },
+};
+
+export const WithLeftIcon: Story = {
+    render: () => (
+        <div className="w-80">
+            <InputWithIcon
+                icon={<Search className="h-3.5 w-3.5" />}
+                placeholder="Search..."
+            />
+        </div>
+    ),
+};
+
+export const WithRightIcon: Story = {
+    render: () => (
+        <div className="w-80">
+            <InputWithIcon
+                iconPosition="right"
+                icon={<Mail className="h-3.5 w-3.5" />}
+                placeholder="Enter email..."
+            />
+        </div>
+    ),
+};
+
+export const FloatingLabel: Story = {
+    render: () => (
+        <div className="w-80">
+            <FloatingLabelInput label="Email address" />
+        </div>
+    ),
+};
+
+export const FloatingLabelError: Story = {
+    render: () => (
+        <div className="w-80">
+            <FloatingLabelInput label="Email" error={true} />
+        </div>
+    ),
+};
+
+export const WithSlot: Story = {
+    render: () => (
+        <div className="w-80">
+            <InputWithSlot slot={<Switch />} placeholder="Feature flag" />
+        </div>
+    ),
+};
+
+export const ValidationLoading: Story = {
+    render: () => (
+        <div className="w-80">
+            <InputWithValidation loading={true} placeholder="Checking..." />
+        </div>
+    ),
+};
+
+export const ValidationSuccess: Story = {
+    render: () => (
+        <div className="w-80">
+            <InputWithValidation valid={true} defaultValue="john_doe" />
+        </div>
+    ),
+};
+
+export const WithFormField: Story = {
+    render: () => (
+        <div className="w-80">
+            <FormField label="Username" required error="Username is required">
+                <Input placeholder="Enter username" />
+            </FormField>
+        </div>
+    ),
 };

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { InputGroup, InputAddon, InputGroupInput } from "@acme/ui/input-group";
-import { Stack } from "@acme/ui/primitives/stack";
-import { Label } from "@acme/ui/label";
+import { FormField } from "@acme/ui/form-field";
 import { Search, DollarSign, AtSign, Lock } from "lucide-react";
 
 const meta = {
@@ -18,79 +17,89 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     render: () => (
-        <Stack gap="md" className="w-80">
-            <Stack gap="sm">
-                <Label>Username</Label>
+        <div className="w-80">
+            <FormField label="Username">
                 <InputGroup>
                     <InputAddon position="left">
                         <AtSign className="h-4 w-4" />
                     </InputAddon>
-                    <InputGroupInput placeholder="username" hasLeftAddon />
+                    <InputGroupInput placeholder="username" />
                 </InputGroup>
-            </Stack>
-        </Stack>
+            </FormField>
+        </div>
     ),
 };
 
 export const WithRightAddon: Story = {
     render: () => (
-        <Stack gap="md" className="w-80">
-            <Stack gap="sm">
-                <Label>Price</Label>
+        <div className="w-80">
+            <FormField label="Price">
                 <InputGroup>
-                    <InputGroupInput placeholder="0.00" hasRightAddon />
+                    <InputGroupInput placeholder="0.00" />
                     <InputAddon position="right">
                         <DollarSign className="h-4 w-4" />
                     </InputAddon>
                 </InputGroup>
-            </Stack>
-        </Stack>
+            </FormField>
+        </div>
     ),
 };
 
 export const WithBothAddons: Story = {
     render: () => (
-        <Stack gap="md" className="w-80">
-            <Stack gap="sm">
-                <Label>Website</Label>
+        <div className="w-80">
+            <FormField label="Website">
                 <InputGroup>
                     <InputAddon position="left">https://</InputAddon>
-                    <InputGroupInput placeholder="example.com" hasLeftAddon hasRightAddon />
+                    <InputGroupInput placeholder="example.com" />
                     <InputAddon position="right">.com</InputAddon>
                 </InputGroup>
-            </Stack>
-        </Stack>
+            </FormField>
+        </div>
     ),
 };
 
 export const SearchInput: Story = {
     render: () => (
-        <Stack gap="md" className="w-80">
-            <Stack gap="sm">
-                <Label>Search</Label>
+        <div className="w-80">
+            <FormField label="Search">
                 <InputGroup>
                     <InputAddon position="left">
                         <Search className="h-4 w-4" />
                     </InputAddon>
-                    <InputGroupInput placeholder="Search..." hasLeftAddon />
+                    <InputGroupInput placeholder="Search..." />
                 </InputGroup>
-            </Stack>
-        </Stack>
+            </FormField>
+        </div>
     ),
 };
 
-export const PasswordInput: Story = {
+export const SmallSize: Story = {
     render: () => (
-        <Stack gap="md" className="w-80">
-            <Stack gap="sm">
-                <Label>Password</Label>
-                <InputGroup>
+        <div className="w-80">
+            <FormField label="Password (Small)">
+                <InputGroup size="sm">
                     <InputAddon position="left">
                         <Lock className="h-4 w-4" />
                     </InputAddon>
-                    <InputGroupInput type="password" placeholder="Enter password" hasLeftAddon />
+                    <InputGroupInput placeholder="Enter password" />
                 </InputGroup>
-            </Stack>
-        </Stack>
+            </FormField>
+        </div>
+    ),
+};
+
+export const LargeSize: Story = {
+    render: () => (
+        <div className="w-80">
+            <FormField label="Password (Large)">
+                <InputGroup size="lg">
+                    <InputAddon position="left">
+                        <Lock className="h-4 w-4" />
+                    </InputAddon>
+                    <InputGroupInput placeholder="Enter password" />
+                </InputGroup>
+            </FormField>
+        </div>
     ),
 };

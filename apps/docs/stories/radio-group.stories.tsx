@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { RadioGroup, RadioGroupItem } from "@acme/ui/radio-group";
+import { RadioGroup, RadioGroupItem, RadioGroupCard } from "@acme/ui/radio-group";
 import { Label } from "@acme/ui/label";
 import { Stack } from "@acme/ui/primitives/stack";
+import { FormField } from "@acme/ui/form-field";
 
 const meta = {
     title: "UI/Form/RadioGroup",
@@ -116,6 +117,85 @@ export const NotificationSettings: Story = {
                     </div>
                 </RadioGroup>
             </div>
+        </Stack>
+    ),
+};
+
+export const ErrorState: Story = {
+    render: () => (
+        <FormField label="Select a plan" error="Please select a valid plan.">
+            <RadioGroup defaultValue="option-one">
+                <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="option-one" id="err-1" error />
+                    <Label htmlFor="err-1" className="cursor-pointer">
+                        Option One
+                    </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="option-two" id="err-2" error />
+                    <Label htmlFor="err-2" className="cursor-pointer">
+                        Option Two
+                    </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="option-three" id="err-3" error />
+                    <Label htmlFor="err-3" className="cursor-pointer">
+                        Option Three
+                    </Label>
+                </div>
+            </RadioGroup>
+        </FormField>
+    ),
+};
+
+export const CardVariant: Story = {
+    render: () => (
+        <RadioGroup defaultValue="pro" className="w-80">
+            <RadioGroupCard
+                value="free"
+                title="Free plan"
+                description="Basic features for personal use. Up to 1 project."
+            />
+            <RadioGroupCard
+                value="pro"
+                title="Pro plan"
+                description="Advanced features for professionals. Unlimited projects."
+            />
+            <RadioGroupCard
+                value="enterprise"
+                title="Enterprise"
+                description="Custom solutions for large teams. Dedicated support."
+            />
+        </RadioGroup>
+    ),
+};
+
+export const HoverState: Story = {
+    render: () => (
+        <Stack gap="sm">
+            <p className="text-xs text-muted-foreground">
+                Hover over the radio items to see the built-in hover effect.
+            </p>
+            <RadioGroup defaultValue="option-one">
+                <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="option-one" id="hover-1" />
+                    <Label htmlFor="hover-1" className="cursor-pointer">
+                        Option One
+                    </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="option-two" id="hover-2" />
+                    <Label htmlFor="hover-2" className="cursor-pointer">
+                        Option Two
+                    </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="option-three" id="hover-3" />
+                    <Label htmlFor="hover-3" className="cursor-pointer">
+                        Option Three
+                    </Label>
+                </div>
+            </RadioGroup>
         </Stack>
     ),
 };

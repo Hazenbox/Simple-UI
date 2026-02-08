@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Checkbox } from "@acme/ui/checkbox";
+import { Checkbox, CheckboxCard } from "@acme/ui/checkbox";
 import { Label } from "@acme/ui/label";
 import { Stack } from "@acme/ui/primitives/stack";
+import { FormField } from "@acme/ui/form-field";
 
 const meta = {
     title: "UI/Form/Checkbox",
@@ -73,6 +74,81 @@ export const Multiple: Story = {
                 <Checkbox id="option3" disabled />
                 <Label htmlFor="option3" className="cursor-pointer opacity-50">
                     Option 3 (disabled)
+                </Label>
+            </div>
+        </Stack>
+    ),
+};
+
+export const ErrorState: Story = {
+    render: () => (
+        <div className="flex items-center space-x-2">
+            <Checkbox id="error-checkbox" error={true} />
+            <Label htmlFor="error-checkbox" className="cursor-pointer">
+                Accept terms and conditions
+            </Label>
+        </div>
+    ),
+};
+
+export const Loading: Story = {
+    render: () => (
+        <div className="flex items-center space-x-2">
+            <Checkbox id="loading-checkbox" loading={true} />
+            <Label htmlFor="loading-checkbox" className="cursor-pointer">
+                Loading checkbox
+            </Label>
+        </div>
+    ),
+};
+
+export const WithTitleDescription: Story = {
+    render: () => (
+        <CheckboxCard
+            title="Email notifications"
+            description="Receive email about account activity"
+        />
+    ),
+};
+
+export const CardGroup: Story = {
+    render: () => (
+        <Stack gap="md">
+            <CheckboxCard
+                title="Email notifications"
+                description="Receive email about account activity"
+            />
+            <CheckboxCard
+                title="Push notifications"
+                description="Receive push notifications on your device"
+            />
+            <CheckboxCard
+                title="SMS notifications"
+                description="Receive text messages for important updates"
+            />
+        </Stack>
+    ),
+};
+
+export const ConsistentSpacing: Story = {
+    render: () => (
+        <Stack gap="sm">
+            <div className="flex items-center space-x-2">
+                <Checkbox id="spacing1" defaultChecked />
+                <Label htmlFor="spacing1" className="cursor-pointer">
+                    First option
+                </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+                <Checkbox id="spacing2" />
+                <Label htmlFor="spacing2" className="cursor-pointer">
+                    Second option
+                </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+                <Checkbox id="spacing3" />
+                <Label htmlFor="spacing3" className="cursor-pointer">
+                    Third option
                 </Label>
             </div>
         </Stack>
