@@ -57,11 +57,11 @@ export const Variants: Story = {
     ),
 };
 
-/* ─── Text Lines (compact spacing) ─── */
+/* ─── Text Lines ─── */
 
 export const TextLine: Story = {
     render: () => (
-        <Stack gap="xs" className="w-80">
+        <Stack gap="sm" className="w-80">
             <Skeleton variant="line" className="w-full" />
             <Skeleton variant="line" className="w-full" />
             <Skeleton variant="line" className="w-3/4" />
@@ -75,7 +75,7 @@ export const Paragraph: Story = {
     render: () => (
         <Stack gap="sm" className="w-80">
             <Skeleton variant="heading" className="w-2/3" />
-            <Stack gap="xs" className="w-full">
+            <Stack gap="sm" className="w-full">
                 <Skeleton variant="line" className="w-full" />
                 <Skeleton variant="line" className="w-full" />
                 <Skeleton variant="line" className="w-11/12" />
@@ -92,7 +92,7 @@ export const Avatar: Story = {
     render: () => (
         <div className="flex items-center gap-space-sm">
             <Skeleton variant="circle" className="h-10 w-10" />
-            <Stack gap="xs" className="flex-1">
+            <Stack gap="sm" className="flex-1">
                 <Skeleton variant="line" className="w-3/4" />
                 <Skeleton variant="line" className="w-1/2" />
             </Stack>
@@ -107,7 +107,7 @@ export const Card: Story = {
         <div className="w-72 rounded-xl border p-3 shadow-sm">
             <Stack gap="sm">
                 <Skeleton variant="rect" className="h-36 w-full" />
-                <Stack gap="xs">
+                <Stack gap="sm">
                     <Skeleton variant="heading" className="w-3/4" />
                     <Skeleton variant="line" className="w-full" />
                     <Skeleton variant="line" className="w-2/3" />
@@ -122,7 +122,7 @@ export const Card: Story = {
 export const ShimmerAnimation: Story = {
     render: () => (
         <Stack gap="md" className="w-80">
-            <Stack gap="xs">
+            <Stack gap="sm">
                 <Skeleton variant="line" animation="shimmer" className="w-full" />
                 <Skeleton variant="line" animation="shimmer" className="w-full" />
                 <Skeleton variant="line" animation="shimmer" className="w-3/4" />
@@ -138,7 +138,7 @@ export const ShimmerCard: Story = {
         <div className="w-72 rounded-xl border p-3 shadow-sm">
             <Stack gap="sm">
                 <Skeleton variant="rect" animation="shimmer" className="h-36 w-full" />
-                <Stack gap="xs">
+                <Stack gap="sm">
                     <Skeleton variant="heading" animation="shimmer" className="w-3/4" />
                     <Skeleton variant="line" animation="shimmer" className="w-full" />
                     <Skeleton variant="line" animation="shimmer" className="w-2/3" />
@@ -157,7 +157,7 @@ export const TableRow: Story = {
                 {[1, 2, 3].map((i) => (
                     <div key={i} className="flex items-center gap-space-sm">
                         <Skeleton variant="circle" className="h-8 w-8" />
-                        <Stack gap="xs" className="flex-1">
+                        <Stack gap="sm" className="flex-1">
                             <Skeleton variant="line" className="w-full" />
                             <Skeleton variant="line" className="w-3/4" />
                         </Stack>
@@ -175,7 +175,7 @@ export const AnimationComparison: Story = {
         <div className="flex gap-space-xl">
             <Stack gap="sm" className="w-64">
                 <p className="text-xs font-medium text-muted-foreground">Pulse</p>
-                <Stack gap="xs">
+                <Stack gap="sm">
                     <Skeleton variant="heading" animation="pulse" className="w-3/4" />
                     <Skeleton variant="line" animation="pulse" className="w-full" />
                     <Skeleton variant="line" animation="pulse" className="w-full" />
@@ -184,7 +184,7 @@ export const AnimationComparison: Story = {
             </Stack>
             <Stack gap="sm" className="w-64">
                 <p className="text-xs font-medium text-muted-foreground">Shimmer</p>
-                <Stack gap="xs">
+                <Stack gap="sm">
                     <Skeleton variant="heading" animation="shimmer" className="w-3/4" />
                     <Skeleton variant="line" animation="shimmer" className="w-full" />
                     <Skeleton variant="line" animation="shimmer" className="w-full" />

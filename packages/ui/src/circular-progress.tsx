@@ -50,16 +50,6 @@ const LABEL_SIZE_MAP: Record<Size, string | null> = {
     xl: "text-sm font-semibold",
 };
 
-/* ─── Icon size per size ─── */
-
-const ICON_SIZE_MAP: Record<Size, string> = {
-    xs: "h-3 w-3",
-    sm: "h-3.5 w-3.5",
-    md: "h-4 w-4",
-    lg: "h-5 w-5",
-    xl: "h-6 w-6",
-};
-
 /* ─── CVA wrapper ─── */
 
 const circularProgressVariants = cva("relative inline-flex items-center justify-center", {
@@ -154,29 +144,23 @@ export const CircularProgress = React.forwardRef<
                 {...props}
             >
                 {/* SVG ring */}
-                {indeterminate && !prefersReducedMotion ? (
-                    <motion.svg
-                        className="h-full w-full"
-                        viewBox={config.viewBox}
-                        xmlns="http://www.w3.org/2000/svg"
-                        animate={{ rotate: 360 }}
-                        transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "linear",
-                        }}
-                    >
-                        {/* Track */}
-                        <circle
-                            className={colorConfig.track}
-                            strokeWidth={resolvedThickness}
-                            stroke="currentColor"
-                            fill="transparent"
-                            r={config.radius}
-                            cx={config.center}
-                            cy={config.center}
-                        />
-                        {/* Animated arc */}
+                <svg
+                    className="h-full w-full -rotate-90 transform"
+                    viewBox={config.viewBox}
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    {/* Track */}
+                    <circle
+                        className={colorConfig.track}
+                        strokeWidth={resolvedThickness}
+                        stroke="currentColor"
+                        fill="transparent"
+                        r={config.radius}
+                        cx={config.center}
+                        cy={config.center}
+                    />
+                    {/* Progress / indeterminate arc */}
+                    {indeterminate && !prefersReducedMotion ? (
                         <motion.circle
                             className={colorConfig.progress}
                             strokeWidth={resolvedThickness}
@@ -187,71 +171,52 @@ export const CircularProgress = React.forwardRef<
                             r={config.radius}
                             cx={config.center}
                             cy={config.center}
-                            initial={{ strokeDashoffset: circumference * 0.75 }}
+                            style={{ transformOrigin: "center" }}
                             animate={{
-                                strokeDashoffset: [circumference * 0.75, circumference * 0.15, circumference * 0.75],
+                                strokeDashoffset: [circumference * 0.75, circumference * 0.2, circumference * 0.75],
+                                rotate: [0, 180, 360],
                             }}
                             transition={{
-                                duration: 1.5,
+                                duration: 2,
                                 repeat: Infinity,
                                 ease: "easeInOut",
                             }}
-                            style={{ transformOrigin: "center", rotate: -90 }}
                         />
-                    </motion.svg>
-                ) : (
-                    <svg
-                        className="h-full w-full -rotate-90 transform"
-                        viewBox={config.viewBox}
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        {/* Track */}
+                    ) : indeterminate && prefersReducedMotion ? (
                         <circle
-                            className={colorConfig.track}
+                            className={colorConfig.progress}
                             strokeWidth={resolvedThickness}
+                            strokeDasharray={circumference}
+                            strokeDashoffset={staticOffset}
+                            strokeLinecap="round"
                             stroke="currentColor"
                             fill="transparent"
                             r={config.radius}
                             cx={config.center}
                             cy={config.center}
                         />
-                        {/* Progress arc */}
-                        {indeterminate && prefersReducedMotion ? (
-                            <circle
-                                className={colorConfig.progress}
-                                strokeWidth={resolvedThickness}
-                                strokeDasharray={circumference}
-                                strokeDashoffset={staticOffset}
-                                strokeLinecap="round"
-                                stroke="currentColor"
-                                fill="transparent"
-                                r={config.radius}
-                                cx={config.center}
-                                cy={config.center}
-                            />
-                        ) : (
-                            <motion.circle
-                                className={colorConfig.progress}
-                                strokeWidth={resolvedThickness}
-                                strokeDasharray={circumference}
-                                strokeDashoffset={offset}
-                                strokeLinecap="round"
-                                stroke="currentColor"
-                                fill="transparent"
-                                r={config.radius}
-                                cx={config.center}
-                                cy={config.center}
-                                initial={false}
-                                animate={{ strokeDashoffset: offset }}
-                                transition={{ duration: 0.5, ease: "easeOut" }}
-                            />
-                        )}
-                    </svg>
-                )}
+                    ) : (
+                        <motion.circle
+                            className={colorConfig.progress}
+                            strokeWidth={resolvedThickness}
+                            strokeDasharray={circumference}
+                            strokeDashoffset={offset}
+                            strokeLinecap="round"
+                            stroke="currentColor"
+                            fill="transparent"
+                            r={config.radius}
+                            cx={config.center}
+                            cy={config.center}
+                            initial={false}
+                            animate={{ strokeDashoffset: offset }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
+                        />
+                    )}
+                </svg>
 
                 {/* Center content: icon or percentage */}
                 {showIcon && (
-                    <span className={cn("absolute inset-0 flex items-center justify-center", ICON_SIZE_MAP[resolvedSize])}>
+                    <span className="absolute inset-0 flex items-center justify-center">
                         {icon}
                     </span>
                 )}
