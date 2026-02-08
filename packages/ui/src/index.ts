@@ -86,4 +86,5 @@ export * from "./primitives/box";
 export * from "./primitives/stack";
 export * from "./primitives/grid";
 export * from "./form-field";
+export * from "./input-enhanced";
 export * from "./lib/utils";

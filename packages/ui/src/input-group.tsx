@@ -3,85 +3,79 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
-import { Input } from "./input";
-import { Stack } from "./primitives/stack";
-import { Box } from "./primitives/box";
+import { Input, type InputProps } from "./input";
 
-const inputAddonVariants = cva(
-    "flex items-center border border-input bg-muted px-3 text-sm text-muted-foreground transition-colors",
+/* ─── InputGroup (container) ─── */
+
+const inputGroupVariants = cva(
+    "flex w-full items-center rounded-lg border border-input bg-background transition-colors focus-within:ring-1 focus-within:ring-ring focus-within:ring-offset-1 hover:border-muted-foreground/50",
     {
         variants: {
-            position: {
-                left: "rounded-l-md border-r-0",
-                right: "rounded-r-md border-l-0",
+            size: {
+                default: "h-8",
+                sm: "h-7",
+                lg: "h-9",
             },
         },
         defaultVariants: {
-            position: "left",
+            size: "default",
         },
     }
 );
 
 export interface InputGroupProps
-    extends React.HTMLAttributes<HTMLDivElement> { }
+    extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof inputGroupVariants> { }
 
 export const InputGroup = React.forwardRef<HTMLDivElement, InputGroupProps>(
-    ({ className, ...props }, ref) => {
-        return (
-            <Stack
-                ref={ref}
-                direction="row"
-                gap="none"
-                align="stretch"
-                className={cn("w-full", className)}
-                role="group"
-                {...props}
-            />
-        );
-    }
+    ({ className, size, ...props }, ref) => (
+        <div
+            ref={ref}
+            className={cn(inputGroupVariants({ size }), className)}
+            role="group"
+            {...props}
+        />
+    )
 );
 InputGroup.displayName = "InputGroup";
 
+/* ─── InputAddon ─── */
+
 export interface InputAddonProps
-    extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof inputAddonVariants> {
+    extends React.HTMLAttributes<HTMLDivElement> {
     position?: "left" | "right";
 }
 
 export const InputAddon = React.forwardRef<HTMLDivElement, InputAddonProps>(
-    ({ className, position = "left", ...props }, ref) => {
-        return (
-            <Box
-                ref={ref}
-                className={cn(inputAddonVariants({ position }), className)}
-                {...props}
-            />
-        );
-    }
-);
-InputAddon.displayName = "InputAddon";
-
-export interface InputGroupInputProps
-    extends React.InputHTMLAttributes<HTMLInputElement> {
-    hasLeftAddon?: boolean;
-    hasRightAddon?: boolean;
-}
-
-export const InputGroupInput = React.forwardRef<
-    HTMLInputElement,
-    InputGroupInputProps
->(({ className, hasLeftAddon, hasRightAddon, ...props }, ref) => {
-    return (
-        <Input
+    ({ className, position = "left", ...props }, ref) => (
+        <div
             ref={ref}
             className={cn(
-                "flex-1 transition-all",
-                hasLeftAddon && "rounded-l-none",
-                hasRightAddon && "rounded-r-none",
+                "flex shrink-0 items-center rounded-md bg-muted/50 px-2 text-xs text-muted-foreground",
+                position === "left" ? "ml-1" : "mr-1",
                 className
             )}
             {...props}
         />
-    );
-});
+    )
+);
+InputAddon.displayName = "InputAddon";
+
+/* ─── InputGroupInput ─── */
+
+export interface InputGroupInputProps extends InputProps { }
+
+export const InputGroupInput = React.forwardRef<
+    HTMLInputElement,
+    InputGroupInputProps
+>(({ className, ...props }, ref) => (
+    <Input
+        ref={ref}
+        className={cn(
+            "flex-1 border-0 bg-transparent shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 hover:border-transparent",
+            className
+        )}
+        {...props}
+    />
+));
 InputGroupInput.displayName = "InputGroupInput";
