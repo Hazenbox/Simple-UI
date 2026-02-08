@@ -111,9 +111,9 @@ export const PinInput = React.forwardRef<HTMLDivElement, PinInputProps>(
                         placeholder={placeholder}
                         className={cn(
                             "h-8 w-8 rounded-lg border border-input bg-background text-center text-sm font-medium ring-offset-background transition-colors",
-                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                            "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1",
                             "disabled:cursor-not-allowed disabled:opacity-50",
-                            pin && "border-primary"
+                            pin && "ring-1 ring-primary/70"
                         )}
                     />
                 ))}

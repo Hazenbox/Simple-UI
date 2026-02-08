@@ -96,8 +96,9 @@ export const Rating = React.forwardRef<HTMLDivElement, RatingProps>(
                                     "transition-colors",
                                     isFilled
                                         ? "fill-yellow-400 text-yellow-400"
-                                        : "fill-transparent text-muted-foreground"
+                                        : "fill-transparent text-muted-foreground/40"
                                 )}
+                                strokeWidth={isFilled ? 2 : 1}
                             />
                             {isHalfFilled && (
                                 <div className="absolute inset-0 overflow-hidden" style={{ width: "50%" }}>
